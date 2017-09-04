@@ -119,7 +119,7 @@ FOREST_AUTH_SECRET=FOREST-AUTH-SECRET // Choose a secure auth secret
 <br>
 
 ### Get Started
-<form method="GET" action="http://app.forestadmin.com/welcome">
+<form method="GET" action="//app.forestadmin.com/welcome">
   <input class="c-form__element" style="width: 50%" id="email-address" name="email" placeholder="Your email address…" type="text" >
   <button type="submit" class="c-btn c-btn--primary">Get Started</button>
 </form>
