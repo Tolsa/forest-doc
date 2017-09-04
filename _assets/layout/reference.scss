@@ -1,0 +1,48 @@
+// References
+// —————————————————————————————————
+
+.l-reference {
+  display: flex;
+}
+.l-reference__desc {
+  flex: 0 0 360px;
+  margin-right: ($gutter * 3);
+  width: 360px;
+
+  ul {
+    li,
+    code {
+      @include font($ff-regular, $fs-smaller);
+    }
+    li {
+      border: 1px solid $reference-arg-bdr;
+      border-radius: $border-radius;
+      box-shadow: 0 1px 2px rgba($grey-darker, 0.05);
+      color: $reference-arg-clr;
+      line-height: 1.6em;
+      margin-bottom: ($gutter / 2);
+      padding: ($gutter / 2);
+    }
+    code:first-child {
+      background-color: $reference-arg-title-bkg;
+      border-radius: $border-radius $border-radius 0 0;
+      color: $reference-arg-title-clr;
+      display: block;
+      margin: ((-$gutter / 2) - 1px) ((-$gutter / 2) - 1px) ($gutter / 2);
+      padding: 3px ($gutter / 2) 2px;
+      @include font($ff-medium, $fs-smaller);
+    }
+    ul {
+      margin: ($gutter / 2) 0 (-$gutter / 2);
+    }
+  }
+}
+.l-reference__example {
+  flex: 1 1 auto;
+  margin-right: -($gutter * 3);
+  overflow: hidden;
+
+  pre {
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+}

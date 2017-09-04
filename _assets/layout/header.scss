@@ -1,0 +1,84 @@
+// Header
+// —————————————————————————————————
+
+$grey-base: #778687;
+$grey-darker: #2E3A3B;
+$green-base: #45B271;
+$z-index-mega: 9;
+
+$header-bkg: #fff;
+$header-height: 80px;
+$header-nav-link-clr: $grey-darker;
+$header-nav-link-clr--hover: $green-base;
+$header-nav-link-clr--last: $green-base;
+$header-nav-link-bdr: $green-base;
+
+
+.l-header {
+  background-color: $header-bkg;
+  box-shadow: 0px 1px 3px 0px rgba(49,47,51,0.10);
+  height: $header-height;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-index-mega;
+
+  .l-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.l-header__logo {
+  background-image: url(#{$img-path}logo.svg);
+  background-size: cover;
+  display: block;
+  height: 40px;
+  width: 126px;
+}
+.l-header__jobs {
+  float: left;
+}
+.l-header__nav {
+
+  li { display: inline-block }
+  a {
+    color: $header-nav-link-clr;
+    display: block;
+    height: $header-height;
+    line-height: $header-height;
+    padding: 0 ($gutter / 2);
+    position: relative;
+
+    &.active {
+      color: $header-nav-link-clr--last;
+    }
+  }
+
+  //== States
+  a:hover {
+    color: $header-nav-link-clr--hover;
+  }
+  a.active:before {
+    height: 4px;
+  }
+
+  form input {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .l-header__logo {
+    display: none;
+  }
+}
+
+@media (max-width: 930px) {
+  .l-header__nav {
+    form {
+      display: none;
+    }
+  }
+}

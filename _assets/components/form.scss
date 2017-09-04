@@ -1,0 +1,31 @@
+// Forms
+// —————————————————————————————————
+
+.c-form__element {
+  background: #fff;
+  border: 1px solid $form-element-bdr;
+  border-radius: $border-radius;
+  box-shadow: inset 0px 1px 3px 0px rgba(218,213,208,0.30);
+  color: $form-element-clr;
+  height: 40px;
+  padding: 0 ($gutter / 2);
+  @include font($ff-regular, $fs-small);
+}
+
+.form-element__select {
+  background-color: color(white);
+  border-radius: $border-radius;
+  font-family: $ff-regular;
+  min-width: 200px;
+  outline: none;
+  rendering: none;
+  resize: none;
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+}
+
+.form-element__select {
+  height: 40px;
+  padding: 0 15px;
+}
+

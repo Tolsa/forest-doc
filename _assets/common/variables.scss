@@ -1,0 +1,108 @@
+// Variables
+// —————————————————————————————————
+
+//== Paths
+$font-path: "/public/fonts/";
+$img-path: "/public/img/";
+
+
+//== Generic
+$border-radius: 4px;
+$gutter: 20px;
+
+//== Zindexes
+$z-index-null: 0;
+$z-index-floor: 1;
+$z-index-base: 2;
+$z-index-mid: 3;
+$z-index-large: 4;
+$z-index-huge: 9;
+
+//== Font-sizes
+$fs-tiny: 12px;
+$fs-smaller: 14px;
+$fs-small: 15px;
+$fs-base: 16px;
+$fs-medium: 17px;
+$fs-large: 22px;
+$fs-larger: 30px;
+$fs-huge: 60px;
+
+
+//== Colors
+$grey-lighter: #E8EDED;
+$grey-light: #CFD4D4;
+$grey: #778687;
+$grey-dark: #434E4E;
+$grey-darker: #2E3A3B;
+
+$green-light: #95CB95;
+$green: #45B271;
+$green-dark: #298C51;
+
+$orange-light: #FF9378;
+$orange: #EF7658;
+$orange-dark: #C95436;
+
+
+//== Body
+$body-bkg: $grey-lighter;
+
+
+//== Header
+$header-height: 80px;
+$header-toggle-bdr: $grey-light;
+$header-toggle-clr: $grey;
+$header-toggle-clr--hover: $grey-darker;
+$header-toggle-clr--active: #fff;
+
+//== Page
+$page-bkg: $grey-lighter;
+$page-cover-height: 340px;
+$page-cover-title-clr: #fff;
+$content-width: 960px;
+$content-txt-clr: $grey;
+$content-txt-bkg--highlight: $grey-lighter;
+$content-txt-clr--highlight: $grey-darker;
+$content-h1-clr: $grey-darker;
+$content-h2-clr: $grey-darker;
+$content-h3-clr: $grey-darker;
+$content-h4-clr: $grey-darker;
+$content-link-clr: $green;
+$content-link-clr--hover: $green-dark;
+$content-list-clr: $grey;
+$step-number-height: 40px;
+$step-number-bkg: $green;
+$step-number-clr: #fff;
+
+
+//== Reference
+$reference-pre-bkg: $grey-darker;
+$reference-arg-bdr: $grey-light;
+$reference-arg-clr: $grey;
+$reference-arg-title-bkg: $grey-light;
+$reference-arg-title-clr: $grey-darker;
+
+
+//== Cover
+$cover-bkg: rgba($grey-darker, 0.7);
+$cover-bkg--hover: rgba($grey-darker, 0.9);
+$cover-title-clr: #fff;
+$cover-subtitle-clr: $grey-lighter;
+
+
+//== Sidebar
+$sidebar-width: 260px;
+$sidebar-bkg: $grey-darker;
+$sidebar-item-height: 52px;
+$sidebar-subitem-height: 30px;
+$sidebar-item-bkg--active: $grey-dark;
+$sidebar-item-bdr--active: $green;
+$sidebar-item-clr: $grey;
+$sidebar-item-clr--hover: $grey-light;
+$sidebar-item-clr--active: #fff;
+
+
+//== Forms
+$form-element-bdr: $grey-light;
+$form-element-clr: $grey-dark;

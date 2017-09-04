@@ -1,0 +1,207 @@
+// Content
+// —————————————————————————————————
+
+.l-content {
+  @include coverer(0, $sidebar-width, 0, 0);
+  @include scrolling();
+}
+.l-content__cover {
+  background-blend-mode: multiply;
+  background-color: $cover-bkg;
+  background-repeat: no-repeat;
+  background-position: left 0;
+  background-size: cover;
+  display: flex;
+  height: $page-cover-height;
+  // left: $sidebar-width;
+  // position: fixed;
+  // top: $header-height;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: $z-index-base;
+  // width: calc(100% - #{$sidebar-width});
+  width: 100%;
+
+  h1 {
+    color: $page-cover-title-clr;
+    margin: auto;
+    position: relative;
+    top: -($gutter * 1.5);
+    @include font("Cubano", $fs-huge);
+
+    &:before,
+    &:after {
+      background-color: #fff;
+      content: "";
+      height: 2px;
+      left: 50%;
+      margin-left: -60px;
+      position: absolute;
+      width: 120px;
+      top: -17px;
+    }
+    &:after {
+      bottom: -27px;
+      top: auto;
+    }
+
+    .l-content__subtitle {
+      display: block;
+      @include font("Cubano", $fs-large);
+      text-align: center;
+    }
+  }
+}
+.l-content__wrapper {
+  background-color: #fff;
+  border-radius: $border-radius $border-radius 0 0;
+  box-shadow: 0 0 4px rgba($grey-darker, 0.2);
+  margin: ($page-cover-height - ($gutter * 3)) auto 0;
+  max-width: $content-width;
+  padding: 1px ($gutter * 3) ($gutter * 3);
+  position: relative;
+  z-index: $z-index-mid;
+  width: 98%;
+
+  h1 {
+    color: $content-h1-clr;
+    margin: ($gutter * 3) 0 $gutter;
+    @include font($ff-regular, $fs-larger);
+  }
+  h2 {
+    color: $content-h1-clr;
+    margin: ($gutter * 2) 0 ($gutter / 2);
+    @include font($ff-medium, $fs-large);
+  }
+  h3 {
+    color: $content-h3-clr;
+    margin: $gutter 0 ($gutter / 2);
+    @include font($ff-medium, $fs-medium);
+  }
+  h4 {
+    color: $content-h4-clr;
+    @include font($ff-regular, $fs-base);
+  }
+  p {
+    color: $content-txt-clr;
+    line-height: 1.8em;
+    margin-bottom: $gutter;
+
+    code {
+      background-color: $content-txt-bkg--highlight;
+      border-radius: $border-radius;
+      color: $content-txt-clr--highlight;
+      padding: 4px;
+      @include font($ff-medium, $fs-base);
+    }
+  }
+  strong {
+    color: $content-txt-clr--highlight;
+    @include font($ff-medium);
+  }
+  a {
+    color: $content-link-clr;
+    text-decoration: underline;
+
+    &:hover {
+      color: $content-link-clr--hover;
+    }
+  }
+  ul {
+    list-style-type: disc;
+    margin: $gutter $gutter ($gutter * 2);
+
+    li {
+      color: $content-list-clr;
+      line-height: 1.4em;
+    }
+    li + li {
+      margin-top: 5px;
+    }
+  }
+  ol {
+    margin: $gutter $gutter ($gutter * 2);
+
+    li {
+      color: $content-list-clr;
+      line-height: 1.4em;
+    }
+    li + li {
+      margin-top: 5px;
+    }
+  }
+  img {
+    border: 1px solid rgba($grey-darker, 0.1);
+    border-radius: $border-radius;
+    box-shadow: 0 1px 2px rgba($grey-darker, 0.05);
+    display: block;
+    margin: $gutter auto;
+    max-width: 100%;
+
+    &.img--retina {
+      padding: 20px;
+      max-width: 60%;
+    }
+  }
+
+  .l-category {
+    background: #778687;
+    border-radius: 2.5px;
+    color: white;
+    font-size: small;
+    padding: 1.5px 3px;
+  }
+
+  .l-category + .l-category { margin-left: 5px; }
+
+  .l-category__forest { background: #2ecc71; }
+  .l-category__lumber { background: #9b59b6; }
+  .l-category__rails { background: #c0392b; }
+}
+
+
+.l-step {
+  display: block;
+}
+.l-step__number {
+  background-color: $step-number-bkg;
+  color: $step-number-clr;
+  line-height: $step-number-height;
+  float: left;
+  margin-right: ($gutter / 2);
+  text-align: center;
+  @include avatar($step-number-height, $border-radius);
+  @include font($ff-medium, $fs-large);
+}
+h2.l-step__title {
+  margin: 2px 0 0;
+  @include font($ff-regular, $fs-base);
+}
+p.l-step__description {
+  font-size: $fs-smaller;
+  margin: 0;
+}
+
+
+//== Cover variants
+.l-content__cover--introduction {
+  background-image: url(#{$img-path}cover-1-bkg.jpg);
+}
+.l-content__cover--developers-guide {
+  background-image: url(#{$img-path}cover-2-bkg.jpg);
+}
+.l-content__cover--knowledge-base,
+.l-content__cover--business-usecases {
+  background-image: url(#{$img-path}cover-3-bkg.jpg);
+}
+.l-content__cover--reference-api {
+  background-image: url(#{$img-path}cover-4-bkg.jpg);
+}
+
+//== Counter
+.counter {
+  .timer {
+    color: $green-dark;
+  }
+}

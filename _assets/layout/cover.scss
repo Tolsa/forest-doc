@@ -1,0 +1,72 @@
+// Cover
+// —————————————————————————————————
+
+.l-covers {
+  display: flex;
+  max-width: calc((240px * 4) + (#{$gutter} * 6));
+  width: 90%;
+  justify-content: center;
+}
+.l-cover {
+  background-blend-mode: multiply;
+  background-color: $cover-bkg;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  border-radius: $border-radius;
+  display: flex;
+  flex: 0 0 calc((100% - (#{$gutter} * 6)) / 4);
+  flex-direction: column;
+  height: 320px;
+  position: relative;
+  text-align: center;
+  word-wrap: nowrap;
+
+  & > div {
+    margin: auto;
+  }
+  & + .l-cover { margin-left: ($gutter * 2) }
+  &:hover {
+    background-color: $cover-bkg--hover;
+    background-size: auto 110%;
+    text-decoration: none;
+    transform: scale(1.05);
+  }
+}
+.l-cover__title {
+  color: $cover-title-clr;
+  margin: ($gutter * 2) 0 (($gutter * 3) + 2px);
+  position: relative;
+  @include font("Cubano", $fs-large);
+
+  &:before,
+  &:after {
+    background-color: #fff;
+    content: "";
+    height: 2px;
+    left: 50%;
+    margin-left: -30px;
+    position: absolute;
+    width: 60px;
+    top: -17px;
+  }
+  &:after {
+    bottom: -20px;
+    top: auto;
+  }
+}
+.l-cover__subtitle {
+  color: $cover-subtitle-clr;
+  // bottom: ($gutter * 2);
+  // left: ($gutter * 2);
+  // position: absolute;
+  // right: ($gutter * 2);
+  @include font($ff-regular, $fs-small);
+}
+
+
+//== Variants
+.l-cover--introduction { background-image: url(#{$img-path}cover-1-bkg.jpg) }
+.l-cover--developer { background-image: url(#{$img-path}cover-2-bkg.jpg) }
+.l-cover--knowledge, .l-cover--business { background-image: url(#{$img-path}cover-3-bkg.jpg) }
+.l-cover--api { background-image: url(#{$img-path}cover-4-bkg.jpg) }

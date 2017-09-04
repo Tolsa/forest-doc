@@ -1,0 +1,22 @@
+title: Forest Documentation
+email: sandro@forestadmin.com
+description: >
+  This is the documentation of Forest Admin: a universal admin interface
+  designed to manage all your application data and business operations.
+baseurl: ""
+url: "http://doc.forestadmin.com"
+twitter_username: ForestSaaS
+github_username:  ForestAdmin
+
+# Build settings
+markdown: kramdown
+sass:
+    style: compressed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+gems:
+  - jekyll-menus
+collections:
+  developer-guide:
+    output: true

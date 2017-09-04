@@ -1,0 +1,19 @@
+.c-btn {
+  background-color: $green;
+  border: none;
+  border-radius: $border-radius;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  padding: 0 $gutter;
+  transition: all 250ms ease-out;
+  @include font($ff-medium, $fs-small);
+
+  //== States
+  &:hover {
+    background-color: $green-dark;
+  }
+}

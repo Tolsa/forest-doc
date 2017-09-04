@@ -1,0 +1,78 @@
+// Typography
+// —————————————————————————————————
+
+//== Grilli Type Eesti import
+$fonts-list: gt-eesti-medium, gt-eesti-regular, gt-eesti-regular-italic;
+
+@each $current-font in $fonts-list {
+  @font-face {
+    font-family: $current-font;
+    src:  url(#{$font-path}eesti/#{$current-font}.eot);
+    src:  url(#{$font-path}eesti/#{$current-font}.eot?#iefix) format('embedded-opentype'),
+          url(#{$font-path}eesti/#{$current-font}.woff) format('woff'),
+          url(#{$font-path}eesti/#{$current-font}.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+
+//== Cubano import
+@font-face {
+  font-family: "Cubano";
+  src:  url(#{$font-path}cubano/cubano.eot);
+  src:  url(#{$font-path}cubano/cubano.eot?#iefix) format('embedded-opentype'),
+        url(#{$font-path}cubano/cubano.woff) format('woff'),
+        url(#{$font-path}cubano/cubano.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+//== Deja-vu import
+@font-face {
+  font-family: "Deja-vu";
+  src:  url(#{$font-path}deja-vu/deja-vu.eot);
+  src:  url(#{$font-path}deja-vu/deja-vu.eot?#iefix) format('embedded-opentype'),
+        url(#{$font-path}deja-vu/deja-vu.woff) format('woff'),
+        url(#{$font-path}deja-vu/deja-vu.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+//== Font family
+$ff-regular: "gt-eesti-regular", Helvetica, Arial, sans-serif;
+$ff-regular-italic: "gt-eesti-regular-italic", Helvetica, Arial, sans-serif;
+$ff-medium: "gt-eesti-medium", Helvetica, Arial, sans-serif;
+
+
+
+//== Mixin usage
+@mixin font($ff-family: $ff-regular, $fs-size: $fs-base){
+  font-family: $ff-family;
+  font-size: $fs-size;
+  font-weight: normal;
+}
+
+
+//== Basic styling
+a {
+  color: color(green, dark);
+  cursor: pointer;
+  font-family: $ff-medium;
+  font-weight: normal;
+  text-decoration: none;
+  transition: all 300ms ease;
+}
+a:hover {
+  color: color(green, x-dark);
+  text-decoration: underline;
+}
+strong {
+  font-family: $ff-medium;
+  font-weight: normal;
+}
+p {
+  line-height: 1.4em;
+}

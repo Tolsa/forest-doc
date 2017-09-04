@@ -1,0 +1,61 @@
+// Sidebar
+// —————————————————————————————————
+
+.l-sidebar {
+  background-color: $sidebar-bkg;
+  width: $sidebar-width;
+  @include coverer();
+  @include scrolling();
+}
+.l-sidebar__item,
+.l-sidebar__subitem {
+  background-color: $sidebar-bkg;
+  border-left: 3px solid transparent;
+  display: block;
+  color: $sidebar-item-clr;
+  height: $sidebar-item-height;
+  line-height: $sidebar-item-height;
+  padding: 0 $gutter 0 ($gutter - 3px);
+  @include font($ff-regular, $fs-medium);
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  //== States
+  &:hover {
+    color: $sidebar-item-clr--hover;
+    text-decoration: none;
+  }
+  &.active {
+    color: $sidebar-item-clr--active;
+  }
+}
+.l-sidebar__subitem {
+  font-size: $fs-smaller;
+  height: $sidebar-subitem-height;
+  line-height: $sidebar-subitem-height;
+}
+
+.l-sidebar__item {
+  +.l-sidebar__group {
+    display: none;
+    opacity: 0;
+    animation: grow .4s ease-in-out;
+  }
+
+  &.active+.l-sidebar__group {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.l-sidebar__item.active,
+.l-sidebar__group.active .l-sidebar__item,
+.l-sidebar__group.active .l-sidebar__subitem {
+  background-color: $sidebar-item-bkg--active;
+  border-color: $sidebar-item-bdr--active;
+  display: block;
+}
+.l-sidebar__group {
+  .l-sidebar__subitem:last-child { height: $sidebar-subitem-height + $gutter }
+}
