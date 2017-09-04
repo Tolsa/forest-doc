@@ -144,8 +144,8 @@ module.exports = (sequelize, DataTypes) => {
 
 ### Example: "user" hasMany "books"
 
-Open the file `models/user.js` and declare the belongsTo relationship in the
-association function.
+Open the file `models/user.js` and declare the hasMany relationship in the
+`associate()` function.
 
 ```javascript
 'use strict';
