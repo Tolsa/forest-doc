@@ -119,7 +119,7 @@ documentation</a> for advanced model customization.
 ### Example: "book" belongsTo "user"
 
 Open the file `models/book.js` and declare the belongsTo relationship in the
-association function.
+`associate()` function.
 
 ```javascript
 'use strict';
