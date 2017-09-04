@@ -309,6 +309,8 @@ In the following example, we use [data_uri](https://rubygems.org/gems/data_uri)
 to parse the encoded file. You should add it to your Gemfile too.
 
 ```ruby
+require 'data_uri'
+
 class Forest::ActionsController < ForestLiana::ApplicationController
 
   def bulk_import
