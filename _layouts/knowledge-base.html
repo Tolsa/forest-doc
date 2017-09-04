@@ -25,21 +25,17 @@
   </head>
   <body ng-controller="HomeCtrl">
 
-    <div class="l-header">
-      <a href="/" target="_self" class="l-header__logo"></a>
+   <div class="l-header">
+      <div class="l-container">
+        <a href="/" class="l-header__logo" target="_self"></a>
 
-      <span class="l-header__spacer"></span>
-
-      <form class="l-header__signup l-pt l-pb" method="GET" action="http://app.forestadmin.com/welcome">
-        <input class="c-form__element" id="email-address" name="email" placeholder="Your email address…" type="text" >
-        <button type="submit" class="c-btn c-btn--primary">Get Started</button>
-      </form>
-
-      <ul class="l-header__nav">
-        <li>
-          <a class="l-menu__item l-ml" href="http://app.forestadmin.com/login">Log in</a>
-        </li>
-      </ul>
+        <ul class="l-header__nav">
+          <form class="l-header__signup l-pt l-pb" method="GET" action="http://app.forestadmin.com/welcome">
+            <input class="c-form__element" id="email-address" name="email" placeholder="Your email address…" type="text" >
+            <button type="submit" class="c-btn c-btn--primary">Get Started</button>
+          </form>
+        </ul>
+      </div>
     </div>
 
     <div class="l-page">
