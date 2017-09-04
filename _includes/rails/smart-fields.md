@@ -90,12 +90,13 @@ class Forest::Customer
 
   collection :customers
 
-   set_fullname = lambda do |user, value|
-    names = value.split
-    user[:firstname] = names.first
-    user[:lastname] = names.last
+  set_fullname = lambda do |user_updated_params, fullname_value|
+    user_updated_params = fullname_value.split
+    user_updated_params[:firstname] = fullname_value.first
+    user_updated_params[:lastname] = fullname_value.last
 
-    user
+    # NOTICE: Returns a hash of the updated values you want to persist
+    user_updated_params
   end
 
   field :fullname, type: 'String', set: set_fullname do
