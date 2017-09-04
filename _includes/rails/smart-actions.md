@@ -207,7 +207,7 @@ The response of an action will be considered as a file to download if you pass
 the option 'download' to the action declaration. It's very useful if you need
 actions like "Generate an invoice" or "Download PDF".
 
-<div class="l-step">
+<div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Add the download option to your action</h2>

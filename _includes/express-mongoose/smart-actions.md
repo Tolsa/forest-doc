@@ -177,7 +177,7 @@ The response of an action will be considered as a file to download if you pass
 the option 'download' to the action declaration. It's very useful if you need
 actions like "Generate an invoice" or "Download PDF".
 
-<div class="l-step">
+<div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Add the download option to your action</h2>
@@ -193,7 +193,7 @@ Liana.collection('customers', {
 });
 ```
 
-<div class="l-step">
+<div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Send the file as a response</h2>
@@ -233,7 +233,7 @@ Passing the option `global: true` makes your Smart Action visible directly from
 your collection without having to select records before. For example, our
 ["Import data"](#importing-data) Smart Action example uses this option.
 
-<div class="l-step">
+<div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Add the download option to your action</h2>
