@@ -7,14 +7,14 @@ layout: home
 
 <div class="l-home">
   <div class="l-covers">
-    <a href="/developer-guide/rails" target="_self" class="l-cover l-cover--developer">
+    <a href="/developer-guide/rails.html" target="_self" class="l-cover l-cover--developer">
       <div>
         <h2 class="l-cover__title">Developer <br/> guide</h2>
         <h4 class="l-cover__subtitle">Implement Forest</h4>
       </div>
     </a>
 
-    <a href="/knowledge-base/" target="_self" class="l-cover l-cover--knowledge">
+    <a href="/knowledge-base.html" target="_self" class="l-cover l-cover--knowledge">
       <div>
         <h2 class="l-cover__title">Knowledge <br/> base</h2>
         <h4 class="l-cover__subtitle">Answer your common questions</h4>
