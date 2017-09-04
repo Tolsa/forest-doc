@@ -241,7 +241,7 @@ end
 # mount ForestLiana::Engine => '/forest'
 ```
 
-<div class="l-step">
+<div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">3</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Send the file as a response</h2>
@@ -273,7 +273,7 @@ Passing the option `global: true` makes your Smart Action visible directly from
 your collection without having to select records before. For example, our
 ["Import data"](#importing-data) Smart Action example uses this option.
 
-<div class="l-step">
+<div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Add the global option to your action</h2>
