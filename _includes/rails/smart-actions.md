@@ -121,16 +121,16 @@ You can declare the list of fields when your action requires parameters from the
   your end-users. Five widgets are currently supported: `JSON editor`, `rich
   text editor`, `date picker`, `text area`, `text input`.
 
-<div class="l-step l-dmt">
+<div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Add the form fields to your action</h2>
-    <p class="l-step__description">lib/forest_liana/collections/rental.rb</p>
+    <p class="l-step__description">lib/forest_liana/collections/review.rb</p>
   </div>
 </div>
 
 ```ruby
-class Forest::Rental
+class Forest::Review
   include  ForestLiana::Collection
 
   collection :reviews
