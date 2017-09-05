@@ -9,6 +9,7 @@ Forest can render three types of charts:
 - Single value (Number of users, MRR, ...)
 - Repartition (Number of users by countries, Paid VS Free, ...)
 - Time-based (Number of signups per month, ...)
+- 1 or multiple filters.
 
 Ensure you've enabled the `Edit Layout` mode to add, edit or delete a chart.
 

@@ -92,7 +92,7 @@ The impersonate process can be done in 2 steps:
 
 ```javascript
 var express = require('express');
-var router = express.router();
+var router = express.Router();
 var liana = require('forest-express-sequelize');
 var models = require('../models');
 
@@ -182,7 +182,7 @@ file. You should add it to your package.json too.
 
 ```javascript
 var express = require('express');
-var router = express.router();
+var router = express.Router();
 const parseDataUri = require('parse-data-uri');
 const csv = require('csv');
 
@@ -239,7 +239,7 @@ following example shows you how to upload the image to AWS S3.
 
 ```javascript
 var express = require('express');
-var router = express.router();
+var router = express.Router();
 var AWS = require('aws-sdk');
 
 function randomFilename() {

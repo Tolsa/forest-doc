@@ -21,6 +21,7 @@ The only information the UI needs to handle such charts is:
 - 1 aggregate function (count, sum, ...)
 - 1 group by field
 - 1 time frame (day, week, month, year) option.
+- 1 or multiple filters.
 
 ![Analytics 1`](/public/img/analytics-1.png)
 

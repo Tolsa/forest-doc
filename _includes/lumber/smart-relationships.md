@@ -88,7 +88,7 @@ Liana.collection('actors', {
 
 ```javascript
 var express = require('express');
-var router = express.router();
+var router = express.Router();
 var liana = require('forest-express-sequelize');
 var Serializer = require('forest-express-serializer').ResourceSerializer;
 

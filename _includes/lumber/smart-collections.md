@@ -47,7 +47,7 @@ Liana.collection('brands', {
 
 ```javascript
 var express = require('express');
-var router = express.router();
+var router = express.Router();
 var Liana = require('forest-express-sequelize');
 var models = require('../models');
 
