@@ -119,23 +119,21 @@ The generated admin microservice uses the ORM Sequelize. <a
 href="http://docs.sequelizejs.com/" target="_blank">Check out their
 documentation</a> for advanced model customization.
 
-### Example: "book" belongsTo "user"
+### Example: "order" belongsTo "customer"
 
-Open the file `models/book.js` and declare the belongsTo relationship in the
+Open the file `models/orders.js` and declare the belongsTo relationship in the
 `associate()` function.
 
 ```javascript
-'use strict';
-
 module.exports = (sequelize, DataTypes) => {
   let models = sequelize.models;
 
-  let Model = sequelize.define('book', {
+  var Model = sequelize.define('orders', {
     // ...
   }, {
     classMethods: {
       associate: () => {
-        Model.belongsTo(models.user, { foreignKey: 'user_id' });
+        Model.belongsTo(models.customers, { foreignKey: 'customer_id' });
       }
     },
     // ...
@@ -145,23 +143,23 @@ module.exports = (sequelize, DataTypes) => {
 };
 ```
 
-### Example: "user" hasMany "books"
+![belongsTo relationship](/public/img/adding-relationships-2.png "belongsTo relationship")
 
-Open the file `models/user.js` and declare the hasMany relationship in the
+### Example: "customer" hasMany "orders"
+
+Open the file `models/customers.js` and declare the hasMany relationship in the
 `associate()` function.
 
 ```javascript
-'use strict';
-
 module.exports = (sequelize, DataTypes) => {
   let models = sequelize.models;
 
-  let Model = sequelize.define('user', {
+  var Model = sequelize.define('customers', {
     // ...
   }, {
     classMethods: {
       associate: () => {
-        Model.hasMany(models.book, { foreignKey: 'user_id' });
+        Model.hasMany(models.orders, { foreign_key: 'customer_id' });
       }
     },
     // ...
@@ -169,7 +167,10 @@ module.exports = (sequelize, DataTypes) => {
 
   return Model;
 };
+
 ```
+
+![hasMany relationship](/public/img/adding-relationships-1.png "hasMany relationship")
 
 ## Glossary
 
