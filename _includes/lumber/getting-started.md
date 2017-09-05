@@ -2,9 +2,11 @@
 
 ## Introduction
 
-Forest instantly provides all common admin tasks such as CRUD operations, simple
-chart rendering, user group management, and WYSIWYG interface editor.
-That's what makes Forest a quick and easy solution to get your admin interface started.
+Lumber is an opensource tool to generate an admin microservice using Forest.
+It instantly provides all common admin tasks such as CRUD operations,
+simple chart rendering, user group management, and WYSIWYG interface editor.
+That's what makes Forest a quick and easy solution to get your admin interface
+started.
 
 This guide assists developers in having the admin completely tailored to cater
 to their specific needs. We've developed Forest so that your admin is 100%
@@ -17,17 +19,18 @@ with virtually no learning curve.
 
 ## How it works
 
-Before you start writing a single line of code, it's a good idea to get an overview of how Forest works.
+Before you start writing a single line of code, it's a good idea to get an
+overview of how Forest with Lumber works.
 
 <div class="l-step">
     <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
     <div class="u-o-h">
       <h2 class="l-step__title">The Initialization phase</h2>
-      <p class="l-step__description">Install the Forest Liana on your application</p>
+      <p class="l-step__description">&nbsp;</p>
     </div>
 </div>
 
-<img src="/public/img/initialization_phase.png" alt="Initialization" class="img--retina">
+<img src="/public/img/lumber_initialization_phase.png" alt="Initialization" class="img--retina">
 
 There are three steps on the initialization phase:
 
@@ -43,7 +46,7 @@ There are three steps on the initialization phase:
     </div>
 </div>
 
-<img src="/public/img/architecture.png" alt="archi" class="img--retina">
+<img src="/public/img/lumber_architecture.png" alt="archi" class="img--retina">
 
 The magic of Forest lies in its architecture. Forest is divided into two main components:
 
@@ -83,7 +86,7 @@ When logging into your account, your credentials are sent to the Forest’s serv
 
 Your password is sent to your <a href="#glossary">Admin API</a> which returns the <a href="#glossary">data token</a> signed by the <a href="#glossary">FOREST_AUTH_SECRET</a> you chose. Each of your requests to your Admin API are authenticated with the <a href="#glossary">data token</a>.
 
-<img src="/public/img/data_security.png" alt="security" class="img--retina">
+<img src="/public/img/lumber_data_security.png" alt="security" class="img--retina">
 
 Your admin uses the <a href="#glossary">UI token</a> to make request about the UI configuration. And the <a href="#glossary">data token</a> is used to make queries on your <a href="#glossary">admin API</a> to manage your data. All our tokens are generated using the <a href="https://jwt.io/">JWT standard</a>.
 
