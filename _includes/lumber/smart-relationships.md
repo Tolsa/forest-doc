@@ -90,12 +90,11 @@ Liana.collection('actors', {
 var express = require('express');
 var router = express.Router();
 var liana = require('forest-express-sequelize');
-var Serializer = require('forest-express-serializer').ResourceSerializer;
 
 function topMovies(req, res) {
   // your business logic to retrieve the top 3 movies
   .then((movies) => {
-    return new liana.ResourceSerializer(liana, models.movies, movies, {}, {
+    return new liana.ResourceSerializer(liana, models.movies, movies, null, {}, {
       count: movies.length
     }).perform();
   })
