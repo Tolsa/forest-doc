@@ -27,6 +27,22 @@ to your Production environment.
 
 [![heroku-deploy-video](https://img.youtube.com/vi/pEQ9Ro3UeKY/0.jpg)](https://www.youtube.com/watch?v=pEQ9Ro3UeKY)
 
+## Managing team permissions
+
+As a user with the "admin" role (See <a
+href="/knowledge-base.html#users-roles-and-permissions" target="_blank">users,
+roles and permissions</a>), you can create different teams.
+
+Easily configure the interface of your teams to:
+- Give limited access to your employees or contractors.
+- Optimize the admin interface per business unit: success, support, sales or
+  marketing teams.
+
+![Team permission 1](/public/img/team-permission-1.png "team-permission")
+
+To add a new team, go to project settings -> Teams -> + New team. Then, invite
+your teammates, switch to the new team and start customizing the interface.
+
 ## Extending the Admin API
 
 Forest provides instantly all the common tasks you need as an admin of your
