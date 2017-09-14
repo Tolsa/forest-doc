@@ -5,6 +5,7 @@ menus: header
 ---
 
 {% include rails/getting-started.md %}
+{% include rails/layout-editor.md %}
 {% include rails/analytics.md %}
 {% include rails/fields.md %}
 {% include rails/relationships.md %}
