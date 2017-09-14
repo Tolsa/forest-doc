@@ -130,8 +130,8 @@ rails g forest_liana:install YOUR-SUPER-SECRET-SECRET-KEY
 - **FOREST\_AUTH\_SECRET** - chosen by yourself - is an environment variable used to sign the data token.
 - **FOREST\_ENV\_SECRET** is an environment variable used to identify your project environment in Forest.
 - **Segment** is a subset of a collection gathering filtered records.
-- **Smart Action** is a specific action related to your business. Read more about <a href="#smart-action">action</a>.
-- **Smart Chart** is a complex <a href="#simple-charts">chart</a> computed based on your business logic. Read more about <a href="#smart-charts">smart chart</a>.
+- **Smart Action** is a specific action related to your business. Read more about <a href="#smart-actions">action</a>.
+- **Smart Chart** is a complex <a href="#creating-a-chart">chart</a> computed based on your business logic. Read more about <a href="#customizing-the-logic-using-a-smart-chart">smart chart</a>.
 - **Smart Collection** is a group of records gathered from different sources implemented following on your business logic. Read more about <a href="#smart-collections">smart collection</a>.
 - **Smart Field** A field that displays a computed value in your collection. Read more about <a href="#smart-fields">smart field</a>.
 - **Smart Relationship** A field that displays a link to another collection. Read more about <a href="#smart-relationships">smart relationship</a>.

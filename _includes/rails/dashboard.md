@@ -1,4 +1,4 @@
-# Dashboard
+# Analytics
 
 As an admin user, KPIs are one of the most important things to follow day by
 day. Your customers' growth, Monthly Recurring Revenue (MRR), Paid VS Free
@@ -25,16 +25,22 @@ The only information the UI needs to handle such charts is:
 
 ![Analytics 1`](/public/img/analytics-1.png)
 
-## Creating a Smart Chart
+## What is a Smart Chart?
 
 Sometimes, charts data are complicated and closely tied to your business.
-Forest allows you to code how the chart is computed. Choose "URL" as the
-data source when configuring your chart. Forest will make the HTTP call to
-this address when retrieving the chart values for the rendering.
+Forest allows you to code how the chart is computed.
+
+![Analytics 5`](/public/img/analytics-5.png)
+
+## Creating a Smart Chart
+
+Choose "URL" as the data source when configuring your chart. Forest will make
+the HTTP call to this address when retrieving the chart values for the
+rendering.
 
 ![Analytics 2`](/public/img/analytics-2.png)
 
-## Value chart
+## Creating a Smart "value" Chart
 
 The `value` format passed to the serializer for a Value chart must be:
 
@@ -106,7 +112,7 @@ class StatsController < ForestLiana::ApplicationController
 end
 ```
 
-## Repartition chart
+## Creating a Smart "repartition" Chart
 
 The `value` format passed to the serializer for a Repartition chart must be:
 
@@ -190,7 +196,7 @@ class StatsController < ForestLiana::ApplicationController
 end
 ```
 
-## Time-based chart
+## Creating a Smart "time-based" chart
 
 The `value` format passed to the serializer for a Line chart must be:
 

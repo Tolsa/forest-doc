@@ -1,23 +1,38 @@
-# Smart Fields
+# Fields
+
+A field is simply an attribute defined in your data model.
+
+## Customizing a field
+
+Forest allows you to customize how a field appears in your admin interface. You
+can rename it, choosing the right widget to display (e.g. text area, image
+viewer, Google map, etc.), adding a description or even setting the
+read/write access.
+
+![Field 1`](/public/img/field-1.png)
+
+To customize a field, go to Collection Settings -> Fields. Then select the
+field to start configuring it.
+
+## What is a Smart Field?
 
 A field that displays a computed value in your collection.
 
 <img src="/public/img/smart-field-2.png" alt="Smart field" class="img--retina">
-
-## What is a Smart Field?
 
 A Smart Field is a column that displays processed-on-the-fly data. It can be as
 simple as "massaging" attributes to make them human friendly, or more complex
 and use relationships to display things such as a total of orders for one of
 your customers or a number of users for a product.
 
+## Creating a Smart Field
 
-Try it out with 1 these 2 examples (it only takes **3 minutes**):
+Try it out with 1 of these 2 examples (it only takes **3 minutes**):
 
 - [Concatenate First and Last names](#example-concatenate-first-and-last-names)
 - [Number of orders for a customer](#example-number-of-orders-for-a-customer)
 
-## Example: Concatenate First and Last names
+### Example: Concatenate First and Last names
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
@@ -47,8 +62,7 @@ end
   </div>
 </div>
 
-
-## Example: Number of orders for a customer
+### Example: Number of orders for a customer
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>

@@ -1,15 +1,26 @@
-# Smart Relationships
+# Relationships
 
-A field that displays a computed reference to another collection.
+A relationship is a <a href="#fields" target="_self">Field</a> that points to
+another collection.
 
 <img src="/public/img/smart-relationship-1.png" alt="Smart relationship" class="img--retina">
 
+## Creating a relationship
+
+Forest supports natively all the relationships defined in your ActiveRecord models
+(`belongsTo`, `hasMany`, …). <a
+href="http://guides.rubyonrails.org/association_basics.html"
+target="_blank">Check the Rails documentation</a> to configure all the
+relationships between your models.
+
+<img src="/public/img/relationship-1.png" alt="relationship">
+
 ## What is a Smart Relationship?
 
-A Smart Relationship is a [Smart Field](#smart-fields) that points to another
-collection. Forest supports natively all the relationships defined in your
-models (`belongsTo`, `hasMany`, …) but you can also defined custom
-relationships between your data.
+Sometimes, you want to create a relationship that does not exist in your
+database. A concrete example could be creating a relationship between two
+collections available in two different databases. Creating a Smart Relationship
+allows you to customize with code how your collections are linked together.
 
 Try it out with one these 2 examples (it only takes a few minutes):
 
