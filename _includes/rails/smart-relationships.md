@@ -1,17 +1,14 @@
 # Relationships
 
+## What is a relationship?
+
 A relationship is a <a href="#fields" target="_self">Field</a> that points to
-another collection.
-
-<img src="/public/img/smart-relationship-1.png" alt="Smart relationship" class="img--retina">
-
-## Creating a relationship
+an another collection.
 
 Forest supports natively all the relationships defined in your ActiveRecord models
 (`belongsTo`, `hasMany`, …). <a
 href="http://guides.rubyonrails.org/association_basics.html"
-target="_blank">Check the Rails documentation</a> to configure all the
-relationships between your models.
+target="_blank">Check the Rails documentation</a> to create new ones.
 
 <img src="/public/img/relationship-1.png" alt="relationship">
 
@@ -31,6 +28,9 @@ Try it out with one these 2 examples (it only takes a few minutes):
 
 In the following example, we add the last delivery man of a customer to your
 Forest admin on a collection customers.
+
+<img src="/public/img/smart-relationship-1.png" alt="Smart relationship"
+  class="img--retina">
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>

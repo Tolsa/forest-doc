@@ -1,5 +1,7 @@
 # Fields
 
+## What is a field?
+
 A field is simply an attribute defined in your data model.
 
 ## Customizing a field

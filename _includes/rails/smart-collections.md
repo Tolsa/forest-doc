@@ -1,10 +1,21 @@
-# Smart Collections
+# Collections
+
+## What is a collection?
+
+A collection is a ...
+
 
 Forest is able to render your data models to its customizable UI. It covers the
 majority of use cases. If needed, you can create a Smart Collection to go one step
 further in the customization of your admin. A Smart Collection is a Forest Collection
-based on your API implementation. Reports or aggregated tables are two of the
-most common use cases.
+based on your API implementation.
+
+## What is a Smart Collection?
+
+A Smart Collection is a Forest Collection based on your API implementation. It
+allows you to go one step further in the customization of your admin by getting
+data from many other sources such as SaaS, in-memory database, message broken,
+etc.
 
 ## Creating a Smart Collection
 

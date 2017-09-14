@@ -1,20 +1,22 @@
-# Smart Actions
+# Actions
 
-A Smart Action is server-side logic triggered at the click of a button.
+## What is an action?
 
-<img src="/public/img/action-3.png" alt="Action" class="img--retina">
+An action is a button that triggers server-side logic through an API call.
+Forest supports natively all common actions required on an admin interface such
+as CRUD, sort, search, export CSV, etc.
 
+## What is a Smart Action?
 
-## What is a Smart Action ?
-Forest provides instantly all common actions such as CRUD, sort, search, etc.
 Sooner or later, you will need to perform actions on your data that are
 specific to your business. Moderating comments, logging into a customer’s
 account (a.k.a impersonate) or banning a user are exactly the kind of important
 tasks you need to make available in order to manage your day-to-day operations.
 
+<img src="/public/img/action-3.png" alt="Action" class="img--retina">
+
 Try it out with this example (it only takes 3 minutes):
 - [Banning a user](#example-banning-a-user)
-
 
 ## Example: Banning a user
 
