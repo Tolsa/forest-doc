@@ -40,7 +40,7 @@ rendering.
 
 ![Analytics 2`](/public/img/analytics-2.png)
 
-## Creating a Smart "value" Chart
+## Smart "value" Chart
 
 The `value` format passed to the serializer for a Value chart must be:
 
@@ -98,21 +98,18 @@ end
 </div>
 
 ```ruby
-# ForestLiana::ApplicationController takes care of the authentication for you.
 class StatsController < ForestLiana::ApplicationController
   def mrr
     stat = ForestLiana::Model::Stat.new({
-      value: 500000 # Your business logic here.
+      value: 500000
     })
 
-    # The serializer_model function serializes the ForestLiana::Model::Stat
-    # model to a valid JSONAPI payload.
     render json: serialize_model(stat)
   end
 end
 ```
 
-## Creating a Smart "repartition" Chart
+## Smart "repartition" Chart
 
 The `value` format passed to the serializer for a Repartition chart must be:
 
@@ -196,7 +193,7 @@ class StatsController < ForestLiana::ApplicationController
 end
 ```
 
-## Creating a Smart "time-based" chart
+## Smart "time-based" chart
 
 The `value` format passed to the serializer for a Line chart must be:
 
