@@ -3,8 +3,9 @@
 ## What is an action?
 
 An action is a button that triggers server-side logic through an API call.
-Forest supports natively all common actions required on an admin interface such
-as CRUD, sort, search, export CSV, etc.
+Without a single line of code, Forest supports natively all common actions
+required on an admin interface such as CRUD (Create, Read, Update, Delete),
+sort, search, data export.
 
 ## What is a Smart Action?
 
@@ -18,32 +19,38 @@ tasks you need to make available in order to manage your day-to-day operations.
 Try it out with this example (it only takes 3 minutes):
 - [Banning a user](#example-banning-a-user)
 
+
 ## Example: Banning a user
 
 In the following example, we add the *Ban user* action to your Forest admin on
 a collection *customers*.
 
-<div class="l-step">
+<div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Declare the action in the collection schema</h2>
-    <p class="l-step__description">lib/forest_liana/collections/customer.rb</p>
+    <p class="l-step__description">/forest/customers.js</p>
   </div>
 </div>
 
-```ruby
-class Forest::Customer
-  include ForestLiana::Collection
+```javascript
+var Liana = require('forest-express-sequelize');
 
-  collection :customers
-  action 'Ban user'
-end
+Liana.collection('customers', {
+  actions: [{ name: 'Ban user' }]
+});
 ```
+
+<br/>
+
+⚠ Notice, that Forest requires automatically the files inside the `/forest`
+directory. It's nor necessary nor advised to require theses files manually
+in your code.
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
   <div class="u-o-h">
-    <h2 class="l-step__title">Restart your Rails server</h2>
+    <h2 class="l-step__title">Restart your Express server</h2>
     <p class="l-step__description">Your action is now visible on Forest</p>
   </div>
 </div>
@@ -53,60 +60,21 @@ end
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">3</span>
   <div class="u-o-h">
-    <h2 class="l-step__title">Configure CORS</h2>
-    <p class="l-step__description">config/application.rb</p>
+    <h2 class="l-step__title">Handle the route</h2>
+    <p class="l-step__description">Declare the route to the Express Router</p>
   </div>
 </div>
 
-We use the gem [rack-cors](https://rubygems.org/gems/rack-cors) for the CORS
-configuration.
+```javascript
+var liana = require('forest-express-sequelize');
 
-```ruby
-class Application < Rails::Application
-  # ...
+function banUser(req, res) {
+  // Your business logic to ban a user here.
+  res.status(204).send();
+}
 
-  config.middleware.insert_before 0, 'Rack::Cors' do
-    allow do
-      origins 'app.forestadmin.com'
-      resource '*', headers: :any, methods: :any
-    end
-  end
-end
-```
-
-<div class="l-step l-mb l-pt">
-  <span class="l-step__number l-step__number--active u-f-l u-hm-r">4</span>
-  <div class="u-o-h">
-    <h2 class="l-step__title">Declare the route</h2>
-    <p class="l-step__description">config/routes.rb (add the route before the Forest engine)</p>
-  </div>
-</div>
-
-```ruby
-namespace :forest do
-  post '/actions/ban-user' => 'customers#ban_user'
-end
-
-# ...
-# mount ForestLiana::Engine => '/forest'
-```
-
-<div class="l-step l-mb l-pt">
-  <span class="l-step__number l-step__number--active u-f-l u-hm-r">5</span>
-  <div class="u-o-h">
-    <h2 class="l-step__title">Create the controller</h2>
-    <p class="l-step__description">app/controllers/forest/customers_controller.rb</p>
-  </div>
-</div>
-
-```ruby
-# ForestLiana::ApplicationController takes care of the authentication for you.
-class Forest::CustomersController < ForestLiana::ApplicationController
-  def ban_user
-    # Your business logic to send an email here.
-    render nothing: true, status: 204
-  end
-end
+// liana.ensureAuthenticated middleware takes care of the authentication for you.
+router.post('/forest/actions/ban-user', liana.ensureAuthenticated, banUser);
 ```
 
 ## Handling input values
@@ -127,45 +95,48 @@ You can declare the list of fields when your action requires parameters from the
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Add the form fields to your action</h2>
-    <p class="l-step__description">lib/forest_liana/collections/review.rb</p>
+    <p class="l-step__description">/forest/customers.js</p>
   </div>
 </div>
 
-```ruby
-class Forest::Review
-  include  ForestLiana::Collection
+```javascript
+var Liana = require('forest-express-mongoose');
 
-  collection :reviews
-  action 'Approve', fields: [{
-    field: 'Comment',
-    type: 'String',
-    description: "Personal description",
-    isRequired: true,
-    defaultValue: 'I approve this comment'
-    widget: 'text area'
+Liana.collection('reviews', {
+  actions: [{
+    name: 'Approve',
+    fields: [{
+      field: 'Comment',
+      type: 'String',
+      description: 'Personal description',
+      isRequired: true,
+      defaultValue: 'I approve this comment',
+      widget: 'text area'
+    }]
   }]
-end
+});
 ```
 
-<br>
+<br/>
 
 Six types of field are currently supported: `Boolean`, `Date`, `Number`,
 `String`, `File` and `Enum`. If you choose the `Enum` type, you can pass the
 list of possible values through the `enums` key:
 
-```ruby
+```javascript
 { field: 'Country', type: 'Enum', enums: ['USA', 'CA', 'NZ'] }
 ```
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
   <div class="u-o-h">
-    <h2 class="l-step__title">Restart your Rails server</h2>
+    <h2 class="l-step__title">Restart your Express server</h2>
     <p class="l-step__description">The action form will appear when triggering the approve action.</p>
   </div>
 </div>
 
 ![Action 2](/public/img/action-5.png)
+
 
 ## HTTP request payload
 
@@ -213,58 +184,48 @@ actions like "Generate an invoice" or "Download PDF".
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Add the download option to your action</h2>
-    <p class="l-step__description">/lib/forest_liana/collections/customer.rb</p>
+    <p class="l-step__description">/forest/customer.js</p>
   </div>
 </div>
 
-```ruby
-class Forest::Customer
-  include ForestLiana::Collection
+```javascript
+var Liana = require('forest-express-sequelize');
 
-  collection :customers
-  action 'Download file', download: true
-end
+Liana.collection('customer', {
+  actions: [{ name: 'Download file', download: true }]
+});
 ```
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
   <div class="u-o-h">
-    <h2 class="l-step__title">Declare the route</h2>
-    <p class="l-step__description">config/routes.rb (add the route before the Forest engine)</p>
+    <h2 class="l-step__title">Send the file as a response</h2>
+    <p class="l-step__description">In your Express route</p>
   </div>
 </div>
 
-```ruby
-namespace :forest do
-  post '/actions/download-file' => 'customers#download_file'
-end
+```javascript
+function generateInvoice(request, response) {
+  var options = {
+    root: __dirname + '/../public/docs',
+    dotfiles: 'deny',
+    headers: {
+      'Access-Control-Expose-Headers': 'Content-Disposition',
+      'Content-Disposition': 'attachment; filename="invoice-234.pdf"'
+    }
+  };
 
-# ...
-# mount ForestLiana::Engine => '/forest'
+  var fileName = 'invoice-234.pdf';
+  response.sendFile(fileName, options, (error) => {
+    if (error) { next(error); }
+  });
+}
 ```
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">3</span>
   <div class="u-o-h">
-    <h2 class="l-step__title">Send the file as a response</h2>
-    <p class="l-step__description">app/controllers/forest/customers_controller.rb</p>
-  </div>
-</div>
-
-```ruby
-class Forest::CustomersController < ForestLiana::ApplicationController
-  def download_file
-    data = open('https://.../file.pdf')
-    send_data data.read, filename: 'myfile.pdf', type: 'application/pdf',
-      disposition: 'attachment'
-  end
-end
-```
-
-<div class="l-step l-mb l-pt">
-  <span class="l-step__number l-step__number--active u-f-l u-hm-r">4</span>
-  <div class="u-o-h">
-    <h2 class="l-step__title">Restart your Rails server</h2>
+    <h2 class="l-step__title">Restart your Express server</h2>
     <p class="l-step__description">The action returns now a file as a response</p>
   </div>
 </div>
@@ -279,17 +240,16 @@ your collection without having to select records before. For example, our
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Add the global option to your action</h2>
-    <p class="l-step__description">/lib/forest_liana/collections/customer.rb</p>
+    <p class="l-step__description">/forest/customer.js</p>
   </div>
 </div>
 
-```ruby
-class Forest::Customer
-  include ForestLiana::Collection
+```javascript
+var Liana = require('forest-express-sequelize');
 
-  collection :customers
-  action 'Import data', global: true
-end
+Liana.collection('customer', {
+  actions: [{ name: 'Import data', global: true }]
+});
 ```
 
 ![Action 4](/public/img/action-4.png)

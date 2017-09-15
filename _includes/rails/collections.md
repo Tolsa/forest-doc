@@ -2,32 +2,38 @@
 
 ## What is a collection?
 
-A collection refers to a table defined in your database.
+A collection is a set of data elements physically stored in the database
+displayed in tabular form (by default), with rows (i.e. records) and columns
+named (i.e. fields). A collection has a specified number of columns, but can
+have any number of rows.
 
-Forest is able to render your data models to its customizable UI. It covers the
-majority of use cases. If needed, you can create a Smart Collection to go one step
-further in the customization of your admin. A Smart Collection is a Forest Collection
-based on your API implementation.
+Forest automatically analyses your data models and instantly make your
+collections available in the Forest UI. It covers the majority of use cases. If
+needed, you can create a Smart Collection to go one step further in the
+customization of your admin.
 
 ## What is a Smart Collection?
 
 A Smart Collection is a Forest Collection based on your API implementation. It
-allows you to go one step further in the customization of your admin by getting
-data from many other sources such as SaaS, in-memory database, message broken,
-etc.
+allows you to reconciliate fields of data coming from different or external
+sources in a single tabular view (by default), without having to physically
+store them into your database.
+
+Fields of data could be coming from many other sources such as other B2B SaaS
+(e.g. Zendesk, Salesforce, Stripe), in-memory database, message broker, etc.
 
 ## Creating a Smart Collection
 
-In the following example, the application has two different databases. Let's
-say the table `customers` is available on the database `accounts` and the
-table `payments` on the database `billings`.
+In the following example, we create a `Payment` Smart Collection as follows:
+
+<img src="/public/img/smart-collection-1.png" alt="Smart collection"
+  class="img--retina">
 
 Forest uses <a href="http://jsonapi.org" target="_blank">JSON API</a> to
-serialize payload in the response of API calls. The following example uses the
-great <a
-href="https://github.com/fotinakis/jsonapi-serializers">jsonapi-serializers</a>
-Gem. You can of course use the library you want or simply serialize your data
-manually.
+serialize payload of API calls. The following example uses <a
+href="https://github.com/fotinakis/jsonapi-serializers"
+target="_blank">jsonapi-serializers</a> Gem. You can of course use the library
+you want or simply serialize your data manually.
 
 <div class="l-step l-pt l-mb">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
@@ -64,7 +70,7 @@ namespace :forest do
 end
 ```
 
-## Listing records
+## Getting all records
 
 Forest triggers the API call `GET /forest/:collection_name` to retrieve
 the list of your records.
@@ -112,7 +118,7 @@ end
 
 ```
 
-## Getting a specific records
+## Getting a specific record
 
 Forest triggers the API call `GET /forest/:collection_name/:id`
 to retrieve a specific record.

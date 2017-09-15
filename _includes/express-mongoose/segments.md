@@ -1,12 +1,19 @@
 # Segments
 
-## Creating a Segment
+## What is a segment?
 
 A Segment is a subset of a collection gathering filtered records.
 
+Segments are made for those who are willing to systematically visualize data
+according to specific sets of filters. It allows you to save your filters
+configuration so that you don't have to compute the same actions every day
+(e.g. signup this week, pending transactions).
+
+## Creating a Segment
+
 Forest provides a straightforward UI to configure step-by-step the segments you
-want. The only information the UI needs to create a segment is a name and some
-filters.
+want. The only information the UI needs to create a segment within a collection
+is a name and some filters.
 
 ![Segment 1`](/public/img/segment-1.png)
 

@@ -2,8 +2,7 @@
 
 ## What is a relationship?
 
-A relationship is a <a href="#fields" target="_self">Field</a> that points to
-an another collection.
+A relationship is a connection between two collections.
 
 Forest supports natively all the relationships defined in your ActiveRecord models
 (`belongsTo`, `hasMany`, …). <a
@@ -14,10 +13,11 @@ target="_blank">Check the Rails documentation</a> to create new ones.
 
 ## What is a Smart Relationship?
 
-Sometimes, you want to create a relationship that does not exist in your
-database. A concrete example could be creating a relationship between two
-collections available in two different databases. Creating a Smart Relationship
-allows you to customize with code how your collections are linked together.
+Sometimes, you want to create a relationship between two set of data that does
+not exist in your database. A concrete example could be creating a relationship
+between two collections available in two different databases. Creating a Smart
+Relationship allows you to customize with code how your collections are linked
+together.
 
 Try it out with one these 2 examples (it only takes a few minutes):
 

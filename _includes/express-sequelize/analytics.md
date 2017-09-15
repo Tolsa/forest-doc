@@ -1,4 +1,4 @@
-# Dashboard
+# Analytics
 
 As an admin user, KPIs are one of the most important things to follow day by
 day. Your customers' growth, Monthly Recurring Revenue (MRR), Paid VS Free
@@ -46,13 +46,11 @@ The `value` format passed to the serializer for a Value chart must be:
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Handle the route</h2>
-    <p class="l-step__description">Create the route in the routes/ directory</p>
+    <p class="l-step__description">Declare the route in the Express Router</p>
   </div>
 </div>
 
 ```javascript
-var express = require('express');
-var router = express.Router();
 var liana = require('forest-express-sequelize');
 
 function mrr(req, res) {
@@ -65,9 +63,7 @@ function mrr(req, res) {
 }
 
 // liana.ensureAuthenticated middleware takes care of the authentication for you.
-router.post('/stats/mrr', liana.ensureAuthenticated, mrr);
-
-module.exports = router;
+router.post('/api/stats/mrr', liana.ensureAuthenticated, mrr);
 ```
 
 ## Repartition chart
@@ -86,69 +82,45 @@ The `value` format passed to the serializer for a Repartition chart must be:
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Handle the route</h2>
-    <p class="l-step__description">Create the route in the routes/ directory</p>
+    <p class="l-step__description">Declare the route in the Express Router</p>
   </div>
 </div>
 
 ```javascript
-var express = require('express');
-var router = express.Router();
 var liana = require('forest-express-sequelize');
-var models = require('../models');
 
-function orderPriceRepartition(req, res) {
-  // Your business logic here.
-  var query = `
-SELECT range, COUNT(*) norders
-FROM (
-  SELECT CASE WHEN SUM(products.price) > 70 THEN '> $70'
-    WHEN SUM(products.price) > 40 THEN '> $40'
-    WHEN SUM(products.price) > 20 THEN '> $20'
-    WHEN SUM(products.price) > 10 THEN '> $10'
-    ELSE '<= $10'
-  END as range
-  FROM orders_products
-  JOIN orders ON orders.id = orders_products.order_id
-  JOIN products ON products.id = orders_products.product_id
-  GROUP BY orders.id
-) f
-GROUP BY range
-ORDER BY CASE WHEN range = '<= $10' THEN 1
-  WHEN range = '> $10' THEN 2
-  WHEN range = '> $20' THEN 3
-  WHEN range = '> $40' THEN 4
-  WHEN range = '> $70' THEN 5
-END
-`;
-
-  return models.sequelize
-    .query(query, {
-      type: models.sequelize.QueryTypes.SELECT
+function avgPricePerSupplier(req, res) {
+  models.item
+    .findAll({
+      attributes: [
+        'supplier',
+        [ db.sequelize.fn('avg', db.sequelize.col('price')), 'value' ]
+      ],
+      group: ['supplier'],
+      order: ['value']
     })
-    .then(function (result) {
-      return result.map(function (r) {
-        return {
-          key: r.range,
-          value: r.norders
+    .then((result) => {
+      return result.map((r) => {
+        r = r.toJSON();
+
+        var ret = {
+          key: r.supplier,
+          value: r.value
         };
+
+        return ret;
       });
     })
-    .then(function (result) {
-      // The liana.StatSerializer function serializes the result to a valid
-      // JSONAPI payload.
+    .then((result) => {
       var json = new liana.StatSerializer({ value: result }).perform();
       res.send(json);
     });
 }
 
 // liana.ensureAuthenticated middleware takes care of the authentication for you.
-router.post('/stats/order_price_repartition', liana.ensureAuthenticated, orderPriceRepartition);
-
-module.exports = router;
-
+router.post('/api/stats/avg_price_per_supplier', liana.ensureAuthenticated,
+  avgPricePerSupplier);
 ```
-
-![repartition chart](/public/img/analytics-3.png "Repartition chart")
 
 ## Time-based chart
 
@@ -166,52 +138,46 @@ The `value` format passed to the serializer for a Line chart must be:
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Handle the route</h2>
-    <p class="l-step__description">Create the route in the routes/ directory</p>
+    <p class="l-step__description">Declare the route in the Express Router</p>
   </div>
 </div>
 
 ```javascript
-var express = require('express');
-var router = express.Router();
 var liana = require('forest-express-sequelize');
-var models = require('../models');
 
-function mrrOverMonth(req, res) {
-  // Your business logic here.
-  var result = [{
-    label: '2017-01',
-    values: { value: 100000 }
-  }, {
-    label: '2017-02',
-    values: { value: 150000 }
-  }, {
-    label: '2017-03',
-    values: { value: 180000 }
-  }, {
-    label: '2017-04',
-    values: { value: 250000 }
-  }, {
-    label: '2017-06',
-    values: { value: 350000 }
-  }, {
-    label: '2017-07',
-    values: { value: 400000 }
-  }, {
-    label: '2017-08',
-    values: { value: 500000 }
-  }];
+function avgPricePerMonth(req, res) {
+  models.item
+    .findAll({
+      attributes: [
+        [ db.sequelize.fn('avg', db.sequelize.col('price')), 'value' ],
+        [ db.sequelize.fn('to_char', db.sequelize.fn('date_trunc', 'month',
+            db.sequelize.col('createdAt')), 'YYYY-MM-DD 00:00:00'), 'key' ]
+      ],
+      group: ['key'],
+      order: ['key']
+    })
+    .then((result) => {
+      return result.map((r) => {
+        r = r.toJSON();
 
-  // The liana.StatSerializer function serializes the result to a valid
-  // JSONAPI payload.
-  var json = new liana.StatSerializer({ value: result }).perform();
-  res.send(json);
+        var ret = {
+          label: r.key,
+          values: {
+            value: r.value
+          }
+        };
+
+        return ret;
+      });
+    })
+    .then((result) => {
+      var json = new liana.StatSerializer({ value: result }).perform();
+      res.send(json);
+    });
+
 }
 
 // liana.ensureAuthenticated middleware takes care of the authentication for you.
-router.post('/stats/mrr_over_month', liana.ensureAuthenticated, mrrOverMonth);
-
-module.exports = router;
-
+router.post('/api/stats/avg_price_per_month', liana.ensureAuthenticated,
+  avgPricePerMonth);
 ```
-
-![time based chart](/public/img/analytics-4.png "Time based chart")

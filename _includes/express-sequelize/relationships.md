@@ -1,20 +1,28 @@
-# Smart Relationships
+# Relationships
 
-A field that displays a computed reference to another collection.
+## What is a relationship?
 
-<img src="/public/img/smart-relationship-1.png" alt="Smart relationship" class="img--retina">
+A relationship is a connection between two collections.
+
+Forest supports natively all the relationships defined in your Sequelize models
+(`belongsTo`, `hasMany`, …). <a
+href="http://docs.sequelizejs.com/manual/tutorial/associations.html"
+target="_blank">Check the Sequelize documentation</a> to create new ones.
+
+<img src="/public/img/relationship-1.png" alt="relationship">
 
 ## What is a Smart Relationship?
 
-A Smart Relationship is a [Smart Field](#smart-fields) that points to another
-collection. Forest supports natively all the relationships defined in your
-models (`belongsTo`, `hasMany`, …) but you can also defined custom
-relationships between your data.
+Sometimes, you want to create a relationship between two set of data that does
+not exist in your database. A concrete example could be creating a relationship
+between two collections available in two different databases. Creating a Smart
+Relationship allows you to customize with code how your collections are linked
+together.
 
 Try it out with one these 2 examples (it only takes a few minutes):
 
-- [BelongsTo Smart Relationship](#example-quot-belongsto-quot-smart-relationship)
-- [HasMany Smart Relationship](#example-quot-hasmany-quot-smart-relationship)
+- [BelongsTo Smart Relationship](#example-belongsto-smart-relationship)
+- [HasMany Smart Relationship](#example-hasmany-smart-relationship)
 
 ## Example: "belongsTo" Smart Relationship
 
@@ -32,18 +40,18 @@ Forest admin on a collection customers.
 ```javascript
 'use strict';
 var Liana = require('forest-express-sequelize');
-var DeliveryMan = require('../models/delivery-man');
+var models = require('../models');
 
-Liana.collection('users', {
+Liana.collection('user', {
   fields: [{
     field: 'delivery_man',
     type: 'String',
     reference: 'deliveryMan.id',
     get: function (object) {
       // returns a Promise
-      return DeliveryMan
+      return models.deliveryMan
         .findOne({
-          // ...
+          // where: { ... }
         });
     }
   }]
@@ -66,7 +74,7 @@ Forest admin on a collection actors.
 
 ```javascript
 'use strict';
-var Liana = require('forest-express-mongoose');
+var Liana = require('forest-express-sequelize');
 
 Liana.collection('actors', {
   fields: [{
@@ -87,7 +95,7 @@ Liana.collection('actors', {
 </div>
 
 ```javascript
-var liana = require('forest-express-mongoose');
+var liana = require('forest-express-sequelize');
 
 function topMovies(req, res) {
   // your business logic to retrieve the top 3 movies

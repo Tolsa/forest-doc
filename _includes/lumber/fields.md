@@ -1,16 +1,31 @@
-# Smart Fields
+# Fields
+
+## What is a field?
+
+A field is simply an attribute defined in your database. Examples of fields:
+`first name`, `gender`, `status`, etc.
+
+## Customizing a field
+
+Forest allows you to customize how a field appears in your admin interface. You
+can rename it, choosing the right widget to display (e.g. `text area`, `image
+viewer`, `Google map`), adding a description or even setting the read/write
+access.
+
+![Field 1`](/public/img/field-1.png)
+
+To customize a field, go to Collection Settings -> Fields. Then select the
+field to start configuring it.
+
+## What is a Smart Field?
 
 A field that displays a computed value in your collection.
 
 <img src="/public/img/smart-field-2.png" alt="Smart field" class="img--retina">
 
-## What is a Smart Field?
-
 A Smart Field is a column that displays processed-on-the-fly data. It can be as
-simple as "massaging" attributes to make them human friendly, or more complex
-and use relationships to display things such as a total of orders for one of
-your customers or a number of users for a product.
-
+simple as concatenating attributes to make them human friendly, or more complex
+(e.g. total of orders).
 
 Try it out with 1 these 2 examples (it only takes **3 minutes**):
 

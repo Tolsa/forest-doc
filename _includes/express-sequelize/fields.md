@@ -1,16 +1,31 @@
-# Smart Fields
+# Fields
+
+## What is a field?
+
+A field is simply an attribute defined in your database. Examples of fields:
+`first name`, `gender`, `status`, etc.
+
+## Customizing a field
+
+Forest allows you to customize how a field appears in your admin interface. You
+can rename it, choosing the right widget to display (e.g. `text area`, `image
+viewer`, `Google map`), adding a description or even setting the read/write
+access.
+
+![Field 1`](/public/img/field-1.png)
+
+To customize a field, go to Collection Settings -> Fields. Then select the
+field to start configuring it.
+
+## What is a Smart Field?
 
 A field that displays a computed value in your collection.
 
 <img src="/public/img/smart-field-2.png" alt="Smart field" class="img--retina">
 
-## What is a Smart Field?
-
 A Smart Field is a column that displays processed-on-the-fly data. It can be as
-simple as "massaging" attributes to make them human friendly, or more complex
-and use relationships to display things such as a total of orders for one of
-your customers or a number of users for a product.
-
+simple as concatenating attributes to make them human friendly, or more complex
+(e.g. total of orders).
 
 Try it out with 1 these 2 examples (it only takes **3 minutes**):
 
@@ -29,9 +44,9 @@ Try it out with 1 these 2 examples (it only takes **3 minutes**):
 
 ```javascript
 'use strict';
-var Liana = require('forest-express-mongoose');
+var Liana = require('forest-express-sequelize');
 
-Liana.collection('users', {
+Liana.collection('user', {
   fields: [{
     field: 'fullname',
     type: 'String',
@@ -63,15 +78,18 @@ Liana.collection('users', {
 
 ```javascript
 'use strict';
-var Liana = require('forest-express-mongoose');
-var Order = require('../models/order');
+var Liana = require('forest-express-sequelize');
+var models = require('../models');
 
-Liana.collection('users', {
+Liana.collection('user', {
   fields: [{
     field: 'numberOfOrders',
     type: 'Number',
     get: function (object) {
-      return Order.count({ user: object._id }); // returns a Promise
+      // returns a Promise
+      return models.environment.count({
+        where: { projectId: project.id }
+      });
     }
   }]
 });
@@ -92,13 +110,12 @@ In order to update a Smart Field, you just need to write the logic to "unzip"
 the data. Note that the `set` method should always return the object it's
 working on. In the example hereunder, the `user` is returned.
 
-If need an Async process, you can also return a Promise that will return the
-user at the end.
-
+If you need an Async process, you can also return a Promise that will return
+the user at the end.
 
 ```javascript
 'use strict';
-const Liana = require('forest-express-mongoose');
+const Liana = require('forest-express-sequelize');
 
 Liana.collection('user', {
   fields: [{
@@ -134,25 +151,30 @@ If you are working with Async, you can also return a Promise.
 
 ```javascript
 'use strict';
-var Liana = require('forest-express-mongoose');
-var Illustration = require('../server/models/illustration');
+const Liana = require('forest-express-sequelize');
 
-Liana.collection('users', {
+Liana.collection('user', {
   fields: [{
-    field: 'fullname',
+    field: 'fullName',
     type: 'String',
-    get: function (object) {
-      return object.firstName + ' ' + object.lastName;
+    get: function (user) {
+      if (user.firstName && user.lastName) {
+        return `${user.firstName} ${user.lastName}`;
+      } else {
+        return null;
+      }
     },
     search: function (query, search) {
-      let names = search.split(' ');
+      let s = models.sequelize;
+      let split = search.split(' ');
 
-      query._conditions.$or.push({
-        firstName: names[0],
-        lastName: names[1]
-      });
+      var searchCondition = s.and(
+        { firstName: { $ilike: split[0] }},
+        { lastName: { $ilike: split[1] }}
+      );
 
-      return query;
+      let searchConditions = _.find(query.where.$and, '$or');
+      searchConditions.$or.push(searchCondition);
     }
   }]
 });

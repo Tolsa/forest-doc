@@ -5,12 +5,12 @@ menus: header
 ---
 
 {% include lumber/getting-started.md %}
-{% include lumber/dashboard.md %}
-{% include lumber/smart-fields.md %}
-{% include lumber/smart-relationships.md %}
-{% include lumber/smart-actions.md %}
+{% include lumber/analytics.md %}
+{% include lumber/fields.md %}
+{% include lumber/relationships.md %}
+{% include lumber/actions.md %}
 {% include lumber/segments.md %}
-{% include lumber/smart-collections.md %}
+{% include lumber/collections.md %}
 {% include lumber/smart-views.md %}
 {% include lumber/integrations.md %}
 {% include lumber/howtos.md %}

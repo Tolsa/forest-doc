@@ -1,4 +1,4 @@
-# Dashboard
+# Analytics
 
 As an admin user, KPIs are one of the most important things to follow day by
 day. Your customers' growth, Monthly Recurring Revenue (MRR), Paid VS Free
@@ -9,7 +9,6 @@ Forest can render three types of charts:
 - Single value (Number of users, MRR, ...)
 - Repartition (Number of users by countries, Paid VS Free, ...)
 - Time-based (Number of signups per month, ...)
-- 1 or multiple filters.
 
 Ensure you've enabled the `Edit Layout` mode to add, edit or delete a chart.
 
@@ -22,6 +21,7 @@ The only information the UI needs to handle such charts is:
 - 1 aggregate function (count, sum, ...)
 - 1 group by field
 - 1 time frame (day, week, month, year) option.
+- 1 or multiple filters.
 
 ![Analytics 1`](/public/img/analytics-1.png)
 
