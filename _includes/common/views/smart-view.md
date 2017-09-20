@@ -46,16 +46,56 @@ Here's how to iterate over them in the template section:
 {% endraw %}
 </div>
 
-## Access a specific record
+## Accessing a specific record
 
 For each record, you will access its attributes through the
-`forest-**attributeName**` property. The `forest-` preceding the attribute name
+`forest-attributeName` property. The `forest-` preceding the field name
 **is required**.
 
 <div ng-non-bindable markdown="1">
 {% raw %}
 ```
-{{record.forest-firstName}}
+<p>
+  {{record.forest-firstName}}
+</p>
+```
+{% endraw %}
+</div>
+
+## Accessing belongsTo relationships
+
+Accessing a `belongsTo` relationship is exactly the same way than accessing a
+simple field. Forest triggers automatically an API call to retrieve the data
+from your Admin API only if it's necessary. Let's take the following schema
+example and display the `address` field of the related `Customer`.
+
+<img src="/public/img/smart-collection-2.png" alt="Smart collection" class="img--retina">
+
+<div ng-non-bindable markdown="1">
+{% raw %}
+```
+<p>
+  {{record.forest-order.forest-customer.forest-address}}
+</p>
+```
+{% endraw %}
+</div>
+
+## Accessing hasMany relationships
+
+Accessing a `hasMany` relationship is exactly the same way than accessing a
+simple field. Forest triggers automatically an API call to retrieve the data
+from your Admin API only if it's necessary. Let's take the following schema
+example and display the `available_at` field of the related `Menu`.
+
+<img src="/public/img/smart-collection-3.png" alt="Smart collection" class="img--retina">
+
+<div ng-non-bindable markdown="1">
+{% raw %}
+```
+{{#each record.forest-menus as |menu|}}
+  <p>{{menu.forest-available_at}}</p>
+{{/each}}
 ```
 {% endraw %}
 </div>
