@@ -5,6 +5,7 @@ menus: header
 ---
 
 {% include lumber/getting-started.md %}
+{% include lumber/layout-editor.md %}
 {% include lumber/analytics.md %}
 {% include lumber/fields.md %}
 {% include lumber/relationships.md %}

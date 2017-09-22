@@ -1,0 +1,10 @@
+.c-notice {
+  padding: $gutter;
+
+  &.info {
+    background: $blue-light;
+    color: $grey;
+    border: 1px solid $blue-dark;
+    line-height: 25px;
+  }
+}

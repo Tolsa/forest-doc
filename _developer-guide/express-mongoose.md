@@ -5,6 +5,7 @@ menus: header
 ---
 
 {% include express-mongoose/getting-started.md %}
+{% include express-mongoose/layout-editor.md %}
 {% include express-mongoose/analytics.md %}
 {% include express-mongoose/fields.md %}
 {% include express-mongoose/relationships.md %}

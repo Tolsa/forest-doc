@@ -5,6 +5,7 @@ menus: header
 ---
 
 {% include express-sequelize/getting-started.md %}
+{% include express-sequelize/layout-editor.md %}
 {% include express-sequelize/analytics.md %}
 {% include express-sequelize/fields.md %}
 {% include express-sequelize/relationships.md %}
