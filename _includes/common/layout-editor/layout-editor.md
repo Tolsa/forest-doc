@@ -2,7 +2,7 @@
 
 The Layout Editor is an essential tool to <a
 href="#managing-team-permissions">manage your teams permissions</a> and
-optimize the admin interface of each business units.
+optimize the admin interface of each business unit.
 
 No coding required, you can directly configure the interface directly using the
 Forest Layout Editor.
