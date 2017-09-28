@@ -282,3 +282,15 @@ class StatsController < ForestLiana::ApplicationController
   end
 end
 ```
+
+## Creating analytics per record
+
+Forest’s dashboard is handy when it comes to monitoring the overall KPIs. But
+you may find the analytics module useful for a more in-depth examination of a
+specific company, user or any other items.
+
+![Analytics 6`](/public/img/analytics-6.png)
+
+"Analytics per record" only supports Smart Charts. The parameter `record_id` is
+automatically passed in the HTTP body to access the record the user is
+currently seeing.
