@@ -56,7 +56,7 @@ meaning you can set up your own custom business logic in a matter of minutes.
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Handle the route</h2>
-    <p class="l-step__description">Declare the route **before** the Forest Liana middleware</p>
+    <p class="l-step__description">Declare the route BEFORE the Forest Liana middleware</p>
   </div>
 </div>
 

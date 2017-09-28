@@ -60,7 +60,7 @@ end
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Declare the route</h2>
-    <p class="l-step__description">config/routes.rb (**before** mounting the Forest Rails engine)</p>
+    <p class="l-step__description">config/routes.rb (BEFORE mounting the Forest Rails engine)</p>
   </div>
 </div>
 
@@ -256,7 +256,7 @@ logic to fetch associated records dynamically.
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Declare the hasMany route</h2>
-    <p class="l-step__description">config/routes.rb (**before** mounting the Forest Rails engine)</p>
+    <p class="l-step__description">config/routes.rb (BEFORE mounting the Forest Rails engine)</p>
   </div>
 </div>
 
