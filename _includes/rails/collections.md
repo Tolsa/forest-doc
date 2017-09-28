@@ -321,3 +321,34 @@ class Forest::PaymentsController < ForestLiana::ApplicationController
   end
 end
 ```
+
+## Searching on a Smart Collection
+
+By default, Smart Collections are not searchable. You can pass the option
+`is_searchable` to display the search bar on the UI.
+
+```ruby
+class Forest::Payment
+  include ForestLiana::Collection
+
+  collection :payments, is_searchable: true
+
+  # ...
+end
+```
+
+The param `search` is send in the HTTP body when a user enters a search in your
+Smart Collection.
+
+```ruby
+class Forest::PaymentsController < ForestLiana::ApplicationController
+  # ...
+
+  def index
+    puts params[:search]
+    # ...
+  end
+
+  # ...
+end
+```
