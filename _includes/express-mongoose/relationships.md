@@ -82,8 +82,19 @@ Liana.collection('users', {
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
   <div class="u-o-h">
-    <h2 class="l-step__title">Handle the route</h2>
-    <p class="l-step__description">Declare the route to the Express Router</p>
+    <h2 class="l-step__title">Declare the route</h2>
+    <p class="l-step__description">app.js</p>
+  </div>
+</div>
+
+```ruby
+app.use('/forest', require('./routes/user'));
+```
+<div class="l-step l-mb l-pt">
+  <span class="l-step__number l-step__number--active u-f-l u-hm-r">3</span>
+  <div class="u-o-h">
+    <h2 class="l-step__title">Implement the route</h2>
+    <p class="l-step__description">/routes/user.js</p>
   </div>
 </div>
 
