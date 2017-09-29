@@ -22,7 +22,7 @@ Try it out with one these 2 examples (it only takes a few minutes):
 - [BelongsTo Smart Relationship](#example-quot-belongsto-quot-smart-relationship)
 - [HasMany Smart Relationship](#example-quot-hasmany-quot-smart-relationship)
 
-## Example: "belongsTo" Smart Relationship
+## Handling BelongsTo relationships
 
 In the following example, we add the last delivery man of a customer to your
 Forest admin on a collection customers.
@@ -57,16 +57,16 @@ Liana.collection('users', {
 
 ```
 
-## Example: "hasMany" Smart Relationship
+## Handling HasMany relationships
 
-In the following example, we add the top 3 movies of an actor to your
-Forest admin on a collection actors.
+Let's say a `User` hasMany `Account`. Here's how to configure the `hasMany`
+Smart Relationships.
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
   <div class="u-o-h">
-    <h2 class="l-step__title">Create the Smart Field</h2>
-    <p class="l-step__description">/forest/actor.js</p>
+    <h2 class="l-step__title">Create the Smart Relationship</h2>
+    <p class="l-step__description">/forest/user.js</p>
   </div>
 </div>
 
@@ -74,11 +74,11 @@ Forest admin on a collection actors.
 'use strict';
 var Liana = require('forest-express-mongoose');
 
-Liana.collection('actors', {
+Liana.collection('users', {
   fields: [{
-    field: 'topmovies',
+    field: 'accounts',
     type: ['String'],
-    reference: 'movies.id'
+    reference: 'accounts.id'
   }]
 });
 
@@ -93,29 +93,35 @@ Liana.collection('actors', {
 </div>
 
 ```javascript
-var liana = require('forest-express-mongoose');
+'use strict';
+const express = require('express');
+const router = express.Router();
+const Liana = require('forest-express-mongoose');
+const Account = require('../models/account');
 
-function topMovies(req, res) {
-  // your business logic to retrieve the top 3 movies
-  .then((movies) => {
-    return new liana.Serializer(liana, models.movies, movies, null, {}, {
-      count: movies.length
-    }).perform();
-  })
-  .then((projects) => res.send(projects))
-  .catch(next);
+function userAccounts(req, res) {
+  let condition = { userId: req.params.userId };
+  let limit = parseInt(req.query.page.size);
+  let skip = (parseInt(req.query.page.number) - 1) * limit;
+
+  return Account.find(condition).limit(limit).skip(skip).exec()
+    .then((accounts) => {
+      return Account.count(condition)
+        .then((count) => {
+          return new Liana.ResourceSerializer(Liana, Account, accounts, null, {}, {
+            count: count
+          }).perform();
+        });
+    })
+    .then((accounts) => {
+      res.send(accounts);
+    });
 }
 
-router.get('/forest/actor/:actorId/relationships/movies', topMovies);
-```
+router.get('/users/:userId/relationships/accounts', userAccounts);
 
-<div class="l-step l-mb l-pt">
-  <span class="l-step__number l-step__number--active u-f-l u-hm-r">3</span>
-  <div class="u-o-h">
-    <h2 class="l-step__title">Restart your Express server</h2>
-    <p class="l-step__description">The Smart Field will appear in your collection.</p>
-  </div>
-</div>
+module.exports = router;
+```
 
 ![SmartField 1](/public/img/smart-field-1.png "smart-field-1")
 

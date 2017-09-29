@@ -24,7 +24,7 @@ Try it out with one these 2 examples (it only takes a few minutes):
 - [BelongsTo Smart Relationship](#example-belongsto-smart-relationship)
 - [HasMany Smart Relationship](#example-hasmany-smart-relationship)
 
-## Example: "belongsTo" Smart Relationship
+## Handling BelongsTo relationships
 
 In the following example, we add the last delivery man of a customer to your
 Forest admin on a collection customers.
@@ -52,7 +52,7 @@ class Forest::Customer
 end
 ```
 
-## Example: "hasMany" Smart Relationship
+## Handling HasMany relationships
 
 In the following example, we add the top 3 movies of an actor to your
 Forest admin on a collection actors.
