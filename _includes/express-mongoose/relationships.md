@@ -17,11 +17,6 @@ between two collections available in two different databases. Creating a Smart
 Relationship allows you to customize with code how your collections are linked
 together.
 
-Try it out with one these 2 examples (it only takes a few minutes):
-
-- [BelongsTo Smart Relationship](#example-quot-belongsto-quot-smart-relationship)
-- [HasMany Smart Relationship](#example-quot-hasmany-quot-smart-relationship)
-
 ## Handling BelongsTo relationships
 
 In the following example, we add the last delivery man of a customer to your
