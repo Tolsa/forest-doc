@@ -3,3 +3,4 @@ s3_website.yml
 _site
 .sass-cache
 .jekyll-metadata
+.env
