@@ -24,14 +24,17 @@ app.use(Liana.init({
   // ...
   integrations: {
     intercom: {
-      appId: 'YOUR_INTERCOM_APP_ID',
-      apiKey: 'YOUR_INTERCOM_API_KEY',
+      accessToken: 'YOUR_INTERCOM_EXTENDED_ACCESS_TOKEN',
       intercom: require('intercom-client'),
       mapping: 'user'
     }
   }
 }));
 ```
+
+<div class="c-notice warning l-mt">
+  The integration needs an "extended" Intercom Access token to let the Forest liana read users and conversations.
+</div>
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
