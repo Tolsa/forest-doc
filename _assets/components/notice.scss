@@ -7,4 +7,11 @@
     border: 1px solid $blue-dark;
     line-height: 25px;
   }
+
+  &.warning {
+    background: $warning-light;
+    color: $warning-dark;
+    border: 1px solid $warning-dark;
+    line-height: 25px;
+  }
 }
