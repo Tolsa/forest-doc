@@ -32,7 +32,7 @@ Forest admin on a collection customers.
 
 ```javascript
 'use strict';
-var Liana = require('forest-express-sequelize');
+var Liana = require('forest-express-mongoose');
 var DeliveryMan = require('../models/delivery-man');
 
 Liana.collection('users', {
@@ -130,4 +130,3 @@ module.exports = router;
 ```
 
 ![SmartField 1](/public/img/smart-field-1.png "smart-field-1")
-
