@@ -38,10 +38,13 @@ Easily configure the interface of your teams to:
 - Optimize the admin interface per business unit: success, support, sales or
   marketing teams.
 
+To add a new team, go to your project settings -> Teams -> + New team and start inviting your teammates.
+
 ![Team permission 1](/public/img/team-permission-1.png "team-permission")
 
-To add a new team, go to project settings -> Teams -> + New team. Then, invite
-your teammates, switch to the new team and start customizing the interface.
+You can switch between teams by clicking on your avatar at the bottom left of your screen. Then, select the team you want to connect to. Once logged into a team, you can start customizing the interface of your team.
+
+![Team permission 1](/public/img/team-permission-2.png "team-permission")
 
 ## Extending the Admin API
 
