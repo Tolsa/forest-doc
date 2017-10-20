@@ -11,6 +11,8 @@ target="_blank">Check the Sequelize documentation</a> to create new ones.
 
 <img src="/public/img/relationship-1.png" alt="relationship">
 
+{% include common/adding-relationships/adding-relationships.md %}
+
 ## What is a Smart Relationship?
 
 Sometimes, you want to create a relationship between two set of data that does
