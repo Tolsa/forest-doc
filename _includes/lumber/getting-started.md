@@ -159,7 +159,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: () => {
-        Model.hasMany(models.orders, { foreign_key: 'customer_id' });
+        Model.hasMany(models.orders, { foreignKey: 'customer_id' });
       }
     },
     // ...
