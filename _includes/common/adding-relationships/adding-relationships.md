@@ -20,18 +20,15 @@ Open the file `models/orders.js` and declare the belongsTo relationship in the
 module.exports = (sequelize, DataTypes) => {
   let models = sequelize.models;
 
-  var Model = sequelize.define('orders', {
-    // ...
-  }, {
-    classMethods: {
-      associate: () => {
-        Model.belongsTo(models.customers, {
-          foreignKey: 'customer_id'
-        });
-      }
-    },
+  var Order = sequelize.define('orders', {
     // ...
   });
+
+  Order.associate = function () {
+    Order.belongsTo(models.customers, {
+      foreignKey: 'customer_id'
+    });
+  };
 
   return Model;
 };
@@ -48,18 +45,15 @@ Open the file `models/customers.js` and declare the hasMany relationship in the
 module.exports = (sequelize, DataTypes) => {
   let models = sequelize.models;
 
-  var Model = sequelize.define('customers', {
-    // ...
-  }, {
-    classMethods: {
-      associate: () => {
-        Model.hasMany(models.orders, {
-          foreignKey: 'customer_id'
-        });
-      }
-    },
+  var Customer = sequelize.define('customers', {
     // ...
   });
+
+  Customer.associate = function () {
+    Customer.hasMany(models.orders, {
+      foreignKey: 'customer_id'
+    });
+  };
 
   return Model;
 };
