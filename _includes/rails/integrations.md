@@ -23,12 +23,15 @@ alongside the corresponding user from your application.
 # ...
 ForestLiana.integrations = {
   intercom: {
-    app_id: 'YOUR_INTERCOM_APP_ID',
-    api_key: 'YOUR_INTERCOM_API_KEY',
+    access_token: 'YOUR_INTERCOM_ACCESS_TOKEN',
     mapping: 'User'
   }
 }
 ```
+
+<div class="c-notice warning l-mt">
+  The integration needs an "extended" Intercom Access token to let the Forest liana read users and conversations.
+</div>
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
