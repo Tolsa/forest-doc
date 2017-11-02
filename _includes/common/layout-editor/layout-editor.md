@@ -62,7 +62,7 @@ a nice icon, change the default sorting (e.g. created_at) and more.
 
 In the Fields section of your collection settings, you'll be able to:
 - change the display name of your field.
-- add a descritpion to your field for a clearer explanation.
+- add a description to your field for a clearer explanation.
 - set the field in read-only mode so that users won't be able to modify it.
 - choose from a list of widget to better display your data (`google map`, `rich
   text editor`, `file picker`, `document viewer` and more).
