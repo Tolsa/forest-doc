@@ -53,7 +53,7 @@ The magic of Forest lies in its architecture. Forest is divided into two main co
 
 ## Data Privacy
 
-The main advantage of Forest's architecture is that absolutely no data transits over our servers. The user accesses application data directly from the client and Forest is just deployed as a service to display and interact with the data. Read more about <a href="/knowledge-base.html/#hosting" target="_self">hosting</a>.
+The main advantage of Forest's architecture is that absolutely no data transits over our servers. The user accesses application data directly from the client and Forest is just deployed as a service to display and interact with the data. Read more about <a href="/knowledge-base.html#hosting" target="_self">hosting</a>.
 
 With Forest, your data are transferred directly from your application to your browser while remaining invisible to our servers. See <a href="#how-it-works">how it works</a>.
 
@@ -61,7 +61,7 @@ With Forest, your data are transferred directly from your application to your br
 
 ## Security
 
-We use a <a href="/knowledge-base.html/#accessibility" target="_self">two-step authentication</a> to connect you to both Forest’s server and your <a href="#glossary">Admin API</a>.
+We use a <a href="/knowledge-base.html#accessibility" target="_self">two-step authentication</a> to connect you to both Forest’s server and your <a href="#glossary">Admin API</a>.
 
 <div class="l-step l-dmt">
     <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>
