@@ -151,6 +151,7 @@ If you are working with Async, you can also return a Promise.
 
 ```javascript
 'use strict';
+const _ = require('lodash');
 const Liana = require('forest-express-sequelize');
 
 Liana.collection('user', {
