@@ -44,9 +44,9 @@ Select your environment, click on “Deploy”, then "Save". You’re now ready 
 
 ![Environment 2](/public/img/environment2.png "env")
 
-## Managing team permissions
+## Managing team, user permissions
 
-As a user with the "admin" role (See <a
+As a an admin (See <a
 href="/knowledge-base.html#users-roles-and-permissions" target="_blank">users,
 roles and permissions</a>), you can create different teams.
 
@@ -55,13 +55,11 @@ Easily configure the interface of your teams to:
 - Optimize the admin interface per business unit: success, support, sales or
   marketing teams.
 
-To add a new team, go to your project settings -> Teams -> + New team and start inviting your teammates.
-
 ![Team permission 1](/public/img/team-permission-1.png "team-permission")
 
-You can switch between teams by clicking on your avatar at the bottom left of your screen. Then, select the team you want to connect to. Once logged into a team, you can start customizing the interface of your team.
+To add a new team, go to your project settings -> Teams -> + New team. If you already have configured a team, you can easily copy the configuration from a previous team to the new one.
 
-![Team permission 1](/public/img/team-permission-2.png "team-permission")
+Once created, invite your teammates to join your team.
 
 ## Extending the Admin API
 
