@@ -9,6 +9,8 @@ Forest supports natively all the relationships defined in your Mongoose models
 href="http://mongoosejs.com/docs/guide.html"
 target="_blank">Check the Mongoose documentation</a> to create new ones.
 
+<img src="/public/img/relationship-1.png" alt="relationship">
+
 ## What is a Smart Relationship?
 
 Sometimes, you want to create a relationship between two set of data that does
