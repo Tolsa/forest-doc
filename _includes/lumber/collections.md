@@ -67,7 +67,7 @@ var router = express.Router();
 var Liana = require('forest-express-sequelize');
 var models = require('../models');
 
-router.get('/forest/brands', Liana.ensureAuthenticated, function (req, res) {
+router.get('/brands', Liana.ensureAuthenticated, function (req, res) {
   // Your business logic here to retrieve the data you want.
   .then(function (values) {
     values = values.map(function (value, index) {
