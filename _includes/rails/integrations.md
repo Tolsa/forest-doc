@@ -30,7 +30,7 @@ ForestLiana.integrations = {
 ```
 
 <div class="c-notice warning l-mt">
-  The integration needs an "extended" Intercom Access token to let the Forest liana read users and conversations.
+  ⚠️ The integration needs an "extended" Intercom Access token to let the Forest liana read users and conversations.
 </div>
 
 <div class="l-step l-mb l-pt">
