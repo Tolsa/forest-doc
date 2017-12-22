@@ -261,7 +261,7 @@ our UI to reach your application. To solve this issue, simply whitelist
 <http://app.forestadmin.com> and <https://app.forestadmin.com> in your CORS
 configuration.
 
-## Update
+## Liana update
 
 ### How can I update Forest to the newest version?
 <span class="l-category l-category__forest">Forest-only</span>
@@ -276,6 +276,16 @@ Depending on your stack, you'll have to run one of the following commands:
 <span class="l-category l-category__lumber">Lumber-only</span>
 
 Simply run the following command `$ npm install -g lumber-cli@latest`
+
+### Have there been any major changes that I should be aware of?
+<span class="l-category">All products</span>
+
+A new version of Forest (2.0.0) has been released on November 17. Important thing to know:
+<div class="c-notice warning l-mt">
+  ⚠️ Collection names in Forest_liana are now based on the model name.
+</div>
+
+If you update to a version greater than or equal to 2.0.0, make sure you haven't received any warnings or error messages before deploying to production.
 
 ## JSON Web Token
 
