@@ -280,12 +280,11 @@ Simply run the following command `$ npm install -g lumber-cli@latest`
 ### Have there been any major changes that I should be aware of?
 <span class="l-category">All products</span>
 
-A new version of Forest (2.0.0) has been released on November 17. Important thing to know:
+A new version of Forest (2.0.0) has been released on November, 17. Important thing to know:
+* Collection names in Forest_liana are now based on the model name.
 <div class="c-notice warning l-mt">
-  ⚠️ Collection names in Forest_liana are now based on the model name.
+  ⚠️ If you update to a version greater than or equal to 2.0.0, make sure you haven't received any warnings or error messages before deploying to production.
 </div>
-
-If you update to a version greater than or equal to 2.0.0, make sure you haven't received any warnings or error messages before deploying to production.
 
 ## JSON Web Token
 
