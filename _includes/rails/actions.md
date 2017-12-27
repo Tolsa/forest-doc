@@ -105,7 +105,7 @@ end
 class Forest::CustomersController < ForestLiana::ApplicationController
   def ban_user
     # Your business logic to send an email here.
-    render nothing: true, status: 204
+    head :no_content
   end
 end
 ```
@@ -294,4 +294,3 @@ end
 ```
 
 ![Action 4](/public/img/action-4.png)
-
