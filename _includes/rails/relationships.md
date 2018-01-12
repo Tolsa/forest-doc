@@ -21,8 +21,8 @@ together.
 
 Try it out with one these 2 examples (it only takes a few minutes):
 
-- [BelongsTo Smart Relationship](#example-belongsto-smart-relationship)
-- [HasMany Smart Relationship](#example-hasmany-smart-relationship)
+- [BelongsTo Smart Relationship](#handling-belongsto-relationships)
+- [HasMany Smart Relationship](#handling-hasmany-relationships)
 
 ## Handling BelongsTo relationships
 

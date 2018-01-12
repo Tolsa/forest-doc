@@ -100,7 +100,7 @@ var liana = require('forest-express-sequelize');
 function topMovies(req, res) {
   // your business logic to retrieve the top 3 movies
   .then((movies) => {
-    return new liana.Serializer(liana, models.movies, movies, null, {}, {
+    return new liana.ResourceSerializer(liana, models.movies, movies, null, {}, {
       count: movies.length
     }).perform();
   })
