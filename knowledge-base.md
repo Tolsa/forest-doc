@@ -170,6 +170,16 @@ them readily available in your admin.
 Yes. UI configurations are specific to environments. By default, you run Forest
 in the dev environment. You can create a new environment in the project settings.
 
+### Should we share the development environment or should each dev create their own?
+<span class="l-category">All products</span>
+
+We recommend that each developer should have its own development environment.
+
+### When something is configured in one environment, how do you propagate the setup (i.e. dev -> staging -> prod)?
+<span class="l-category">All products</span>
+
+To deploy a change from environment to another, you can use the "Copy layout configuration" feature in your project settings -> Environments. We recommend first to deploy from dev to staging, and then from staging to production.
+
 ## Maintenance
 
 ### Is it maintained?
