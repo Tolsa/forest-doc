@@ -110,6 +110,9 @@ function topMovies(req, res) {
 
 router.get('/forest/actor/:actorId/relationships/movies', topMovies);
 ```
+<div class="c-notice warning l-mt">
+  ⚠️ Make sure to serialize the response properly using the liana.ResourceSerializer to allow Forest to display your data.
+</div>
 
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">3</span>

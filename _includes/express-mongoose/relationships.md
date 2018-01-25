@@ -130,5 +130,8 @@ router.get('/users/:userId/relationships/accounts', userAccounts);
 
 module.exports = router;
 ```
+<div class="c-notice warning l-mt">
+  ⚠️ Make sure to serialize the response properly using the liana.ResourceSerializer to allow Forest to display your data.
+</div>
 
 ![SmartField 1](/public/img/smart-field-1.png "smart-field-1")
