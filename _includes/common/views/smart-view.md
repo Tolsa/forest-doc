@@ -187,10 +187,14 @@ Try it out with one these 3 examples (each one taking about 10 minutes):
 
 ```
 <style>
-  #map_canvas { width: 100%; }
+  #map {
+    width: 100%;
+    z-index: 10;
+  }
 </style>
 
-<div id="map_canvas"></div>
+
+<div id="map"></div>
 ```
 
 <div class="l-step l-mb l-pt">
@@ -209,7 +213,27 @@ export default Ember.Component.extend({
   tagName: '',
   router: Ember.inject.service('-routing'),
   map: null,
+  loaded: false,
+  loadPlugin: function() {
+    var that = this;
+    Ember.run.scheduleOnce('afterRender', this, function () {
+      Ember.$.getScript('//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js', function () {
+        that.set('loaded', true);
+      });
+
+      var cssLink = $('<link>');
+      $('head').append(cssLink);
+
+      cssLink.attr({
+        rel:  'stylesheet',
+        type: 'text/css',
+        href: '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css'
+      });
+    });
+  }.on('init'),
   displayMap: function () {
+    if (!this.get('loaded')) { return; }
+
     var markers = [];
     $('#map_canvas').height($('.l-content').height());
 
@@ -218,54 +242,45 @@ export default Ember.Component.extend({
       markers.push([split[0], split[1], record.get('id')]);
     });
 
-    var geocoder = new window.google.maps.Geocoder();
-    var latlng = new window.google.maps.LatLng(37.7869148, -122.3998675);
-    var myOptions = {
-      zoom: 13,
-      center: latlng,
-      mapTypeId: window.google.maps.MapTypeId.ROADMAP
-    };
+    this.map = new L.Map('map');
 
-    this.map = new window.google.maps.Map(
-      window.document.getElementById('map_canvas'), myOptions);
+    var osmUrl='//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osm = new L.TileLayer(osmUrl, { attribution: osmAttrib });
+
+    this.map.setView(new L.LatLng(37.7869148, -122.3998675), 13);
+    this.map.addLayer(osm);
 
     this.addMarker(markers);
-  }.observes('records.[]').on('didInsertElement'),
+  }.observes('records.[]', 'loaded').on('didInsertElement'),
   addMarker: function (markers) {
     var that = this;
 
     markers.forEach(function (marker) {
       var lat = parseFloat(marker[0]);
       var lng = parseFloat(marker[1]);
-      var myLatlng = new window.google.maps.LatLng(lat, lng);
+
       var recordId = marker[2];
       var record = that.get('records').findBy('id', recordId);
       var displayValue = record.get(
         that.get('collection.displayFieldWithNamespace')) ||
         record.get('forest-email') || record.get('id');
 
-      var infowindow = new window.google.maps.InfoWindow({
-        content: '<strong>' + that.get('collection.displayName') +
-          '</strong><p>' + displayValue + '</p>'
-      });
-      var markerObj = new window.google.maps.Marker({
-        position: myLatlng,
-        map: that.get('map')
-      });
+      marker = L.marker([lat, lng]).addTo(that.map);
 
-      markerObj.addListener('click', function () {
+      marker.bindPopup('<strong>Delivery man</strong><p>' + displayValue + '</p>')
+
+      marker.on('mouseover', function (e) { this.openPopup(); });
+      marker.on('mouseout', function (e) { this.closePopup(); });
+      marker.on('click', function () {
         that.get('router')
           .transitionTo('rendering.data.collection.list.viewEdit.details',
             [that.get('collection.id'), recordId]);
       });
 
-      markerObj.addListener('mouseover', function () {
-        infowindow.open(that.get('map'), this);
-      });
-
-      markerObj.addListener('mouseout', function () {
-        infowindow.close();
-      });
+      setInterval(function () {
+        marker.setLatLng(new L.latLng(lat -= 0.0001, lng -= 0.0001));
+      }, Math.floor(Math.random() * 2000) + 300);
     });
   }
 });
