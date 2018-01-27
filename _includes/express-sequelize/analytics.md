@@ -14,8 +14,11 @@ Ensure you've enabled the `Edit Layout` mode to add, edit or delete a chart.
 
 ## Creating a Chart
 
-Forest provides a straightforward UI to configure step-by-step the charts you
-want. The only information the UI needs to handle such charts is:
+Forest provides a straightforward UI to configure the charts you want.
+
+### Simple mode
+
+The only information the UI needs to handle such charts is:
 
 - 1 collection
 - 1 aggregate function (count, sum, ...)
@@ -24,6 +27,77 @@ want. The only information the UI needs to handle such charts is:
 - 1 or multiple filters.
 
 ![Analytics 1`](/public/img/analytics-1.png)
+
+### Query mode
+
+The Query mode has been designed to provide you with a flexible, easy to use
+and accessible interface when hard questions need to be answered. Simply type
+SQL queries using the online editor and visualize your data graphically.
+
+![Analytics 7`](/public/img/analytics-7.png)
+
+<div class='c-notice info l-mt l-mb'>
+  The syntax of the SQL examples below can be different depending on the
+  database type (SQLite, MySQL, Postgres, MS SQL, etc.). Please, refer to your
+  database documentation for more information.
+</div>
+
+#### Single value
+
+The returned column must be name **value**. In the following example, we simply
+count the number of "customers".
+
+```sql
+SELECT COUNT(*) AS value
+FROM customers;
+```
+
+<br>
+
+#### Single value (with growth percentage)
+
+The returned columns must be name `value` and `previous`. In the following
+example, we simply count the number of "customers" in January 2018 and compare
+this value to the number of "customers" in the previous month.
+
+```sql
+SELECT current.count AS value, previous.count AS previous
+FROM (
+  SELECT COUNT(*)
+  FROM customers
+  WHERE created_at BETWEEN '2018-01-01' AND '2018-02-01'
+) as current, (
+  SELECT COUNT(*)
+  FROM customers
+  WHERE created_at BETWEEN '2017-12-01' AND '2018-01-01'
+) as previous;
+```
+
+<br>
+
+#### Repartition
+
+The returned columns must be name `key` and `value`. In the following example,
+we simply count the number of "customers" distributed by country.
+
+```sql
+SELECT country AS key, COUNT(*) as value
+FROM "customers"
+GROUP BY country;
+```
+
+<br>
+
+#### Time-based
+
+The returned columns must be name `key` and `value`. In the following
+example, we simply count the number of "customers" per month.
+
+```sql
+SELECT DATE_TRUNC('month', "createdAt") AS key, COUNT(*) as value
+FROM customers
+GROUP BY created_at;
+```
 
 ## Creating a Smart Chart
 
