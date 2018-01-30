@@ -114,6 +114,68 @@ In order to refresh the records on the page, trigger the `fetchRecords` action:
 {% endraw %}
 </div>
 
+## Fetching records of any collection
+
+Trigger an API call to your Admin API in order to fetch records from any
+collection of your admin.
+
+We will use the `store` service directly available from your javascript file to
+do that:
+
+```javascript
+'use strict';
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  // ...
+  store: Ember.inject.service('store'),
+  fetchData: function () {
+    let params = {
+      filter: {
+        'available_at': '>' + moment().startOf('isoWeek').toISOString(), // Beginning of this week
+                        ',<' + moment().endOf('isoWeek').toISOString(), // End of this week
+      },
+      filterType: 'and',
+      timezone: 'Europe/Paris',
+      'page[size]': 100
+    };
+
+    // This will trigger an API call to your Admin API.
+    this.get('store').query('forest_chef-availability', params)
+      .then((availabilities) => {
+        this.set('availabilities', availabilities);
+      });
+  }.on('init'),
+  / ...
+});
+```
+
+In the example above, the result is set to the variable `availabilities`. You can access it directly from your template:
+
+<div ng-non-bindable markdown="1">
+{% raw %}
+```
+{{#each availabilities as |availability|}}
+  <p>{{availability.id}}</p>
+{{/each}}
+```
+{% endraw %}
+</div>
+
+<br>
+
+A full working example is available in the [Calendar
+example](#example-calendar-view).
+
+### Available parameters
+
+- filter: A list of filter you want to apply. Syntax is a javascript object
+  that contains `<field>: '<operator><value>,<operator><value>,...'`
+- filterType: `and` or `or`
+- timezone: The timezone string
+- page[number]: The page number
+- page[size]: The number of records per page
+
 ## Deleting records
 
 The `deleteRecords` action lets you delete one or multiple records. A panel
@@ -359,6 +421,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   router: Ember.inject.service('-routing'),
+  store: Ember.inject.service('store'),
   loaded: false,
   loadPlugin: function() {
     var that = this;
@@ -371,7 +434,26 @@ export default Ember.Component.extend({
           allDaySlot: false,
           minTime: '08:00:00',
           eventClick: function (event, jsEvent, view) {
-            that.get('router').transitionTo('rendering.data.collection.list.viewEdit.details', [that.get('collection.id'), event.id]);
+            that.get('router')
+              .transitionTo('rendering.data.collection.list.viewEdit.details',
+                [that.get('collection.id'), event.id]);
+          },
+          viewRender: function(view, element) {
+            let params = {
+              filter: {
+                'available_at': '>' + view.start.toISOString() +
+                                ',<' + view.end.toISOString()
+              },
+              filterType: 'and',
+              timezone: 'Europe/Paris',
+              'page[size]': 100
+            };
+
+            that.get('store')
+              .query('forest_chef-availability', params)
+              .then((availabilities) => {
+                that.set('availabilities', availabilities);
+              });
           }
         });
       });
@@ -387,23 +469,21 @@ export default Ember.Component.extend({
     });
   }.on('init'),
   setEvent: function () {
+    if (!this.get('availabilities')) { return; }
+
     var events = [];
     $('#calendar').fullCalendar('removeEvents');
 
-    this.get('records').forEach(function (chef) {
-      chef.get('forest-chef_availabilities').then(function (availabilities) {
-        availabilities.forEach(function (availability) {
-          var event = {
-            id: chef.get('id'),
-            title: chef.get('forest-lastname'),
-            start: availability.get('forest-available_at')
-          };
+    this.get('availabilities').forEach(function (availability) {
+      var event = {
+        id: availability.get('forest-chef').get('id'),
+        title: availability.get('forest-chef').get('forest-lastname'),
+        start: availability.get('forest-available_at')
+      };
 
-          $('#calendar').fullCalendar('renderEvent', event, true);
-        });
-      });
+      $('#calendar').fullCalendar('renderEvent', event, true);
     });
-  }.observes('loaded', 'records.[]')
+  }.observes('loaded', 'availabilities.[]')
 });
 ```
 
