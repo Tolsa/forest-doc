@@ -114,7 +114,7 @@ In order to refresh the records on the page, trigger the `fetchRecords` action:
 {% endraw %}
 </div>
 
-## Fetching records of any collection
+## Fetching data
 
 Trigger an API call to your Admin API in order to fetch records from any
 collection of your admin.
