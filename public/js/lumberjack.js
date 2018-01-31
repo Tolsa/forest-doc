@@ -29,6 +29,14 @@ app.run(function ($rootScope) {
     }
   });
 
+  window.docsearch({
+     apiKey: 'af3041a533369af9ec173043a713591f',
+     indexName: 'forestadmin',
+     inputSelector: '#search',
+     debug: false
+  });
+  $('#search').show();
+
   $('.l-sidebar__item a').prop('du-scrollspy', true);
 
   $rootScope.$on('duScrollspy:becameActive', function ($event, $element) {
