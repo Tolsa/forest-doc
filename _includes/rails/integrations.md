@@ -6,6 +6,7 @@ All your admin actions can be performed at the same place,
 bringing additional intelligence to your admin and ensuring consistency.
 
 ## Intercom
+<span class="l-category l-category__pro">Premium feature</span>
 
 Configuring the Intercom integration for Forest allows you to have your user's
 session data (location, browser type, ...) and support conversations directly
@@ -44,6 +45,7 @@ ForestLiana.integrations = {
 ![Intercom 1](/public/img/intercom-1.png)
 
 ## Stripe
+<span class="l-category l-category__pro">Premium feature</span>
 
 Configuring the Stripe integration for Forest allows you to have your user's
 payments, invoices and cards alongside the corresponding user from your
