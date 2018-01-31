@@ -97,9 +97,11 @@ users.
 ### How does the pricing work?
 <span class="l-category">All products</span>
 
-Forest is **completely free**, see our [blog post](https://medium.com/@vincentghyssens/a5c93e7a9cb4#.mpng5dnl1). That applies to projects and teams of all sizes.
-Our Enterprise plan is for bigger companies with particular needs
-(SLA, dedicated support, etc.): <http://www.forestadmin.com/enterprise>
+You can start using Forest for Free - see our [blog post](https://medium.com/@vincentghyssens/a5c93e7a9cb4#.mpng5dnl1) - and scale your admin features at your own pace.
+
+Our Pro plan give you access to all our premium features, see our [blog post](https://medium.com/into-the-forest/introducing-forest-premium-features-903bad319890). We charge you based on the number of activities you make on your production environment in your Forest admin interface. This means you will only be charged at the end of the month and based on your level of activity.
+
+Our Enterprise plan is for businesses with specific back office needs requiring dedicated account management and custom setup (SLA, dedicated support, etc.): <http://www.forestadmin.com/pricing>
 
 
 # Product
@@ -109,10 +111,7 @@ Our Enterprise plan is for bigger companies with particular needs
 ### Does Lumber works with MongoDB?
 <span class="l-category l-category__lumber">Lumber-only</span>
 
-Not yet. Lumber needs to scan the DB structure to generate the admin
-microservice. With MongoDB, all the informations about data structure are in the
-ORM schemas, which makes the scanning process more difficult. So far Lumber supports MySQL and
-Postgres DBs. The standard version of Forest supports Express/Mongoose.
+Yes. Your're in the good place if you have an application (in any language) that have a MongoDB database and you would like to have a Forest admin interface built on top. For further details on how to implement Forest on a MongoDB database, see our [MongoDB Example](https://github.com/ForestAdmin/forest-examples/tree/master/examples/mongodb-database/simple).
 
 ### Do you have other frameworks support?
 <span class="l-category">Forest</span>
