@@ -29,6 +29,7 @@ The only information the UI needs to handle such charts is:
 ![Analytics 1`](/public/img/analytics-1.png)
 
 ### Query mode
+<span class="l-category l-category__pro">Premium feature</span>
 
 The Query mode has been designed to provide you with a flexible, easy to use
 and accessible interface when hard questions need to be answered. Simply type

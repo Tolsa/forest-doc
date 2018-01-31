@@ -28,6 +28,7 @@ to your Production environment.
 [![heroku-deploy-video](https://img.youtube.com/vi/pEQ9Ro3UeKY/0.jpg)](https://www.youtube.com/watch?v=pEQ9Ro3UeKY)
 
 ## Managing team, user permissions
+<span class="l-category l-category__pro">Premium feature</span>
 
 As a an admin (See <a
 href="/knowledge-base.html#users-roles-and-permissions" target="_blank">users,

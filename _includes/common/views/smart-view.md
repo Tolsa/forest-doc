@@ -7,6 +7,7 @@ Forest renders your data using a table view when you access multiple records
 and a form view to access, edit and create a specific record.
 
 ## What is a Smart View?
+<span class="l-category l-category__pro">Premium feature</span>
 
 Smart Views lets you code your view using JS, HTML, and CSS. They are taking
 data visualization to the next level. Ditch the table view and display your

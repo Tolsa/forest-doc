@@ -45,6 +45,7 @@ Select your environment, click on “Deploy”, then "Save". You’re now ready 
 ![Environment 2](/public/img/environment2.png "env")
 
 ## Managing team, user permissions
+<span class="l-category l-category__pro">Premium feature</span>
 
 As a an admin (See <a
 href="/knowledge-base.html#users-roles-and-permissions" target="_blank">users,
