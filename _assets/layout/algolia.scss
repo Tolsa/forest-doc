@@ -1,0 +1,31 @@
+// Algolia
+// —————————————————————————————————
+
+.algolia-autocomplete {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid $grey-dark;
+  margin-bottom: 15px;
+
+  #search {
+    border: none;
+    display: block;
+    width: 100%;
+    background: $sidebar-bkg;
+    height: 30px;
+    color: white;
+    font-size: $fs-base;
+  }
+}
+
+.algolia-autocomplete .ds-dropdown-menu {
+  min-width: $sidebar-width - 10px !important;
+  max-width: $sidebar-width - 10px !important;
+  width: $sidebar-width - 10px !important;
+}
+
+.algolia-docsearch-suggestion {
+  width: $sidebar-width - 30px !important;
+  min-width: $sidebar-width - 30px !important;
+  max-width: $sidebar-width - 30px !important;
+}
