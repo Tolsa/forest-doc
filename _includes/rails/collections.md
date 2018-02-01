@@ -48,7 +48,7 @@ you want or simply serialize your data manually.
 class Forest::Payment
   include ForestLiana::Collection
 
-  collection :payments
+  collection :Payment
 
   field :id, type: 'String'
   field :amount, type: 'String'
@@ -182,10 +182,10 @@ how to configure the `belongsTo` relationship:
 class Forest::Payment
   include ForestLiana::Collection
 
-  collection :payments
+  collection :Payment
 
   # ...
-  belongs_to :order, type: 'String', reference: 'orders.id'
+  belongs_to :order, type: 'String', reference: 'Order.id'
 end
 ```
 
@@ -241,10 +241,10 @@ how to configure the `hasMany` relationship:
 class Forest::Payment
   include ForestLiana::Collection
 
-  collection :payments
+  collection :Payment
 
   # ...
-  has_many :menus, type: 'String', reference: 'menus.id'
+  has_many :menus, type: 'String', reference: 'Menu.id'
 end
 ```
 
@@ -262,7 +262,7 @@ logic to fetch associated records dynamically.
 
 ```ruby
   namespace :forest do
-    get '/payments/:payment_id/menus' => 'payments#menus'
+    get '/Payment/:payment_id/menus' => 'payments#menus'
     resources :payments
   end
 
@@ -331,7 +331,7 @@ By default, Smart Collections are not searchable. You can pass the option
 class Forest::Payment
   include ForestLiana::Collection
 
-  collection :payments, is_searchable: true
+  collection :Payment, is_searchable: true
 
   # ...
 end

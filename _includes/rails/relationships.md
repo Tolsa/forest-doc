@@ -44,9 +44,9 @@ Forest admin on a collection customers.
 class Forest::Customer
   include ForestLiana::Collection
 
-  collection :customers
+  collection :Customer
 
-  belongs_to :last_delivery_man, reference: 'delivery_men.id' do
+  belongs_to :last_delivery_man, reference: 'DeliveryMan.id' do
     object.orders.last.delivery_man # returns a "DeliveryMan" Model.
   end
 end
@@ -69,9 +69,9 @@ Forest admin on a collection actors.
 class Forest::Actor
   include ForestLiana::Collection
 
-  collection :actors
+  collection :Actor
 
-  has_many :top_movies, type: ['string'], reference: 'movies.id'
+  has_many :top_movies, type: ['string'], reference: 'Movie.id'
 end
 ```
 
@@ -85,7 +85,7 @@ end
 
 ```ruby
 namespace :forest do
-  get '/actors/:actor_id/relationships/top_movies' => 'actors#top_movies'
+  get '/Actor/:actor_id/relationships/top_movies' => 'actors#top_movies'
 end
 ```
 
@@ -120,4 +120,3 @@ end
 </div>
 
 ![SmartField 1](/public/img/smart-field-1.png "smart-field-1")
-
