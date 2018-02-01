@@ -36,7 +36,7 @@ a collection *customers*.
 class Forest::Customer
   include ForestLiana::Collection
 
-  collection :customers
+  collection :Customer
   action 'Ban user'
 end
 ```
@@ -136,7 +136,7 @@ You can declare the list of fields when your action requires parameters from the
 class Forest::Review
   include  ForestLiana::Collection
 
-  collection :reviews
+  collection :Review
   action 'Approve', fields: [{
     field: 'Comment',
     type: 'String',
@@ -222,7 +222,7 @@ actions like "Generate an invoice" or "Download PDF".
 class Forest::Customer
   include ForestLiana::Collection
 
-  collection :customers
+  collection :Customer
   action 'Download file', download: true
 end
 ```
@@ -288,7 +288,7 @@ your collection without having to select records before. For example, our
 class Forest::Customer
   include ForestLiana::Collection
 
-  collection :customers
+  collection :Customer
   action 'Import data', global: true
 end
 ```

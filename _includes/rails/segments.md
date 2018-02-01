@@ -46,7 +46,7 @@ collection customers.
 class Forest::Customer
   include ForestLiana::Collection
 
-  collection :customers
+  collection :Customer
   segment 'VIP' do
     { id: Customer
       .joins(:orders)

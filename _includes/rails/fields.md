@@ -48,7 +48,7 @@ Try it out with 1 of these 2 examples (it only takes **3 minutes**):
 class Forest::User
   include ForestLiana::Collection
 
-  collection :users
+  collection :User
 
   field :fullname, type: 'String' do
     "#{object.firstname} #{object.lastname}"
@@ -78,7 +78,7 @@ end
 class Forest::Customer
   include ForestLiana::Collection
 
-  collection :customers
+  collection :Customer
 
   field :number_of_orders, type: 'Number' do
     object.orders.length
@@ -104,7 +104,7 @@ working on. In the example hereunder, the `user` is returned.
 class Forest::Customer
   include ForestLiana::Collection
 
-  collection :customers
+  collection :Customer
 
   set_fullname = lambda do |user_updated_params, fullname_value|
     user_updated_params = fullname_value.split
@@ -133,7 +133,7 @@ having been unzipped.
 class Forest::Customer
   include ForestLiana::Collection
 
-  collection :customers
+  collection :Customer
 
   search_fullname = lambda do |query, search|
     firstname, lastname = search.split
