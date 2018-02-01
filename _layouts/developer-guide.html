@@ -35,9 +35,7 @@
         <ul class="l-header__nav">
           {% for item in site.menus.header %}
           <li>
-            <a href="{{item.url}}" target="_self" {% if item.url == page.url %}class="active"{% endif %}>
-              {{item.title}}
-            </a>
+            <a href="{{item.url}}" target="_self" {% if item.url == page.url %}class="active"{% endif %}>{{item.title}}</a>
           </li>
           {% endfor %}
         </ul>
