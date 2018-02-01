@@ -232,7 +232,7 @@ User roles determine the access level or permissions of your teammates. Forest A
 
 You can define users roles in your project settings. Go to *Settings* -> *Users* and assign roles to each of your teammates.
 
-<img src="../img/users-roles.png" alt="roles" class="img--retina">
+<img src="../public/img/users-roles.png" alt="roles" class="img--retina">
 
 
 # Technical
