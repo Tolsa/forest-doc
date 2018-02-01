@@ -3,23 +3,27 @@
   <head>
     <meta charset="UTF-8">
     <title>{{page.title}}</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/1.0.0/angular-scroll.min.js"></script>
-    <script src="/public/js/lumberjack.js"></script>
-
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/public/img/favicon.png">
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/zenburn.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <!-- JS -->>
+    {% javascript_asset_tag global %}
+    - /_assets/js/jquery.min.js
+    - /_assets/js/ScrollMagic.min.js
+    - /_assets/js/debug.addIndicators.min.js
+    - /_assets/js/angular.min.js
+    - /_assets/js/angular-scroll.min.js
+    - /_assets/js/docsearch.min.js
+    - /_assets/js/highlight.min.js
+    - /_assets/js/lumberjack.js
+    {% endjavascript_asset_tag %}
 
     <!-- CSS -->
     {% css_asset_tag global %}
     - /_assets/app.scss
+    - /_assets/docsearch.min.css
+    - /_assets/zenburn.min.css
     {% endcss_asset_tag %}
 
   </head>
@@ -39,6 +43,8 @@
     </div>
 
     <div class="l-page">
+      <input id="search" name="search" placeholder="What are you looking for?" type="text">
+
       <div id="toc" class="l-sidebar" du-scroll-container="scroll-container">
       </div>
 
@@ -60,5 +66,13 @@
       });
     </script>
     <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript"> docsearch({
+       apiKey: 'af3041a533369af9ec173043a713591f',
+       indexName: 'forestadmin',
+       inputSelector: '### REPLACE ME ####',
+       debug: false // Set debug to true if you want to inspect the dropdown
+    });
+  </script>
   </body>
 </html>
