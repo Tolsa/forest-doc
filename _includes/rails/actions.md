@@ -21,8 +21,11 @@ Try it out with this example (it only takes 3 minutes):
 
 ## Example: Banning a user
 
-In the following example, we add the *Ban user* action to your Forest admin on
-a collection *customers*.
+In the following example, we add the *Ban user* action to the admin on
+a collection *customers*. By default, the API triggered created by a Smart
+Action is simply a POST on `/forest/actions/<dasherize_name_of_the_action>`.
+You can customize the route with the optional parameter `endpoint` to get a
+user friendly name and control the API call.
 
 <div class="l-step">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">1</span>

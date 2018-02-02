@@ -37,6 +37,9 @@ liana.collection('comments', {
 });
 ```
 
+You can customize the route with the optional parameter `endpoint` to get a
+user friendly name and control the API call.
+
 Implementation: `/routes/comments.js`
 
 ```javascript
