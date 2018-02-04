@@ -15,3 +15,14 @@ menus: header
 {% include express-mongoose/smart-views.md %}
 {% include express-mongoose/integrations.md %}
 {% include express-mongoose/howtos.md %}
+
+<script type="text/javascript"> docsearch({
+   apiKey: 'af3041a533369af9ec173043a713591f',
+   indexName: 'forestadmin',
+   inputSelector: '#search',
+   debug: true,
+   algoliaOptions: {
+     facetFilters: ["technonology:Express/Mongoose"]
+   }
+});
+</script>

@@ -16,3 +16,13 @@ menus: header
 {% include lumber/integrations.md %}
 {% include lumber/howtos.md %}
 
+<script type="text/javascript"> docsearch({
+   apiKey: 'af3041a533369af9ec173043a713591f',
+   indexName: 'forestadmin',
+   inputSelector: '#search',
+   debug: true,
+   algoliaOptions: {
+     facetFilters: ["technonology:Lumber"]
+   }
+});
+</script>

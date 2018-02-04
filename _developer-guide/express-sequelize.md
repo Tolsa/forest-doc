@@ -15,3 +15,14 @@ menus: header
 {% include express-sequelize/smart-views.md %}
 {% include express-sequelize/integrations.md %}
 {% include express-sequelize/howtos.md %}
+
+<script type="text/javascript"> docsearch({
+   apiKey: 'af3041a533369af9ec173043a713591f',
+   indexName: 'forestadmin',
+   inputSelector: '#search',
+   debug: true,
+   algoliaOptions: {
+     facetFilters: ["technonology:Express/Sequelize"]
+   }
+});
+</script>
