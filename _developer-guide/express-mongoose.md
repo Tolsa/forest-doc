@@ -20,7 +20,7 @@ menus: header
    apiKey: 'af3041a533369af9ec173043a713591f',
    indexName: 'forestadmin',
    inputSelector: '#search',
-   debug: true,
+   debug: false,
    algoliaOptions: {
      facetFilters: ["technonology:Express/Mongoose"]
    }
