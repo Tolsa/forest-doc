@@ -111,7 +111,7 @@ Our Enterprise plan is for businesses with specific back office needs requiring 
 ### Does Lumber works with MongoDB?
 <span class="l-category l-category__lumber">Lumber-only</span>
 
-Yes. Your're in the good place if you have an application (in any language) that have a MongoDB database and you would like to have a Forest admin interface built on top. For further details on how to implement Forest on a MongoDB database, see our [MongoDB Example](https://github.com/ForestAdmin/forest-examples/tree/master/examples/mongodb-database/simple).
+Yes. Your're in the good place if you have an application (in any language) that has a MongoDB database and you would like to have a Forest admin interface built on top. For further details on how to implement Forest on a MongoDB database, see our [MongoDB Example](https://github.com/ForestAdmin/forest-examples/tree/master/examples/mongodb-database/simple).
 
 ### Do you have other frameworks support?
 <span class="l-category">Forest</span>
