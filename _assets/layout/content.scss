@@ -175,6 +175,10 @@
   @include avatar($step-number-height, $border-radius);
   @include font($ff-medium, $fs-large);
 }
+h2.l-step {
+  margin: 12px 0 0;
+  @include font($ff-regular, $fs-base);
+}
 h2.l-step__title {
   margin: 2px 0 0;
   @include font($ff-regular, $fs-base);
