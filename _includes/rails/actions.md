@@ -233,6 +233,38 @@ end
 <div class="l-step l-mb l-pt">
   <span class="l-step__number l-step__number--active u-f-l u-hm-r">2</span>
   <div class="u-o-h">
+    <h2 class="l-step__title">Configure CORS</h2>
+    <p class="l-step__description">config/application.rb</p>
+  </div>
+</div>
+
+We use the gem [rack-cors](https://rubygems.org/gems/rack-cors) for the CORS
+configuration.
+
+```ruby
+class Application < Rails::Application
+  # ...
+
+  config.middleware.insert_before 0, 'Rack::Cors' do
+    allow do
+      origins 'app.forestadmin.com'
+      resource '*',
+        methods: :any,
+        headers: :any,
+        expose: ['Content-Disposition']
+    end
+  end
+end
+```
+
+<div class="c-notice warning l-mt">
+  ⚠️ If you forget to specify "expose: ['Content-Disposition']" in the CORS configuration, the filename of the downloaded file won't be customisable as described in the step 4.
+</div>
+
+
+<div class="l-step l-mb l-pt">
+  <span class="l-step__number l-step__number--active u-f-l u-hm-r">3</span>
+  <div class="u-o-h">
     <h2 class="l-step__title">Declare the route</h2>
     <p class="l-step__description">config/routes.rb (add the route before the Forest engine)</p>
   </div>
@@ -248,7 +280,7 @@ end
 ```
 
 <div class="l-step l-mb l-pt">
-  <span class="l-step__number l-step__number--active u-f-l u-hm-r">3</span>
+  <span class="l-step__number l-step__number--active u-f-l u-hm-r">4</span>
   <div class="u-o-h">
     <h2 class="l-step__title">Send the file as a response</h2>
     <p class="l-step__description">app/controllers/forest/customers_controller.rb</p>
@@ -258,7 +290,8 @@ end
 ```ruby
 class Forest::CustomersController < ForestLiana::ApplicationController
   def download_file
-    data = open('https://.../file.pdf')
+    # TODO: Add a "myLocalFile.pdf" file at the root of your project to have a working example.
+    data = open('myLocalFile.pdf')
     send_data data.read, filename: 'myfile.pdf', type: 'application/pdf',
       disposition: 'attachment'
   end
