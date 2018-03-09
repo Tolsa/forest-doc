@@ -252,7 +252,7 @@ Try it out with one these 3 examples (each one taking about 10 minutes):
 <style>
   #map {
     width: 100%;
-    z-index: 10;
+    z-index: 4;
   }
 </style>
 
